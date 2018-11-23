@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>InicioDeSesion</servlet-name>
+        <servlet-class>controladores.InicioDeSesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaLogIn</servlet-name>
+        <servlet-class>vista.VistaLogIn</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaRegistroUsuario</servlet-name>
+        <servlet-class>vista.VistaRegistroUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistroUsuario</servlet-name>
+        <servlet-class>controladores.RegistroUsuario</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InicioDeSesion</servlet-name>
+        <url-pattern>/InicioDeSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaLogIn</servlet-name>
+        <url-pattern>/VistaLogIn</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaRegistroUsuario</servlet-name>
+        <url-pattern>/VistaRegistroUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroUsuario</servlet-name>
+        <url-pattern>/RegistroUsuario</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

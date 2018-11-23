@@ -1,0 +1,54 @@
+body
+{
+	background: black;
+	position: fixed;
+	top: -10px;
+	left: 0px;
+	width:100%;
+	padding: 0px;
+}
+#menu
+{
+	background: white;
+	align-items: center;
+	position: relative;
+	top: 0px;
+	width: 100%;
+	display: block;	
+
+}
+
+#menu .logo{
+	display: inline-block;
+	margin-bottom: 0px;
+}
+
+#menu ul
+{
+	display: inline-block;
+	margin: 0px;
+}
+
+#logo_ipn
+{
+	width: 50px;
+	height: auto;
+	margin-bottom: 0px;
+}
+li
+{
+	list-style-type: none;
+	display: inline-block;
+	padding: 10px;
+	cursor: pointer;
+}
+li:hover
+{
+	background: black;
+	color: white;
+}
+.cuerpo
+{
+	background: red;
+	position: fixed;
+}
