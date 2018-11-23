@@ -16,6 +16,14 @@
         <servlet-name>RegistroUsuario</servlet-name>
         <servlet-class>controladores.RegistroUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroOrganizador</servlet-name>
+        <servlet-class>controladores.RegistroOrganizador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaRegistroOrganizador</servlet-name>
+        <servlet-class>vista.VistaRegistroOrganizador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioDeSesion</servlet-name>
         <url-pattern>/InicioDeSesion</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>RegistroUsuario</servlet-name>
         <url-pattern>/RegistroUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaRegistroOrganizador</servlet-name>
+        <url-pattern>/VistaRegistroOrganizador</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>RegistroOrganizador</servlet-name>
+        <url-pattern>/RegistroOrganizador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
