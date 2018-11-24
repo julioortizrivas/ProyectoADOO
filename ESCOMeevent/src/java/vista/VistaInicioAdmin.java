@@ -102,6 +102,12 @@ public class VistaInicioAdmin extends HttpServlet {
             out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Nuevo Lugar");
             out.println("                  <i class='material-icons left'>add_circle</i>");
             out.println("           </button>");
+            
+            
+            out.println("		   <button class='btn-large waves-effect waves-light' type='button' name='action' onClick='window.location=\"VistaRegistroOrganizador\"'>Nuevo Organizador");
+            out.println("                  <i class='material-icons left'>add_circle</i>");
+            out.println("                   </button>");
+            
             out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mostrar Usuarios");
             out.println("                  <i class='material-icons left'>assignment_ind</i>");
             out.println("           </button>");

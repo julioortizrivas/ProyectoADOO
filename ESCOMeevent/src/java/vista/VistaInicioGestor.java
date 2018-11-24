@@ -87,13 +87,13 @@ public class VistaInicioGestor extends HttpServlet {
             out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mi Perfil");
             out.println("                  <i class='material-icons left'>account_circle</i>");
             out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Nuevo Evento");
+            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaRegistroEvento\"'>Nuevo Evento");
             out.println("                  <i class='material-icons left'>event</i>");
             out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Eventos Registrados por mí");
+            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaEventosGestor\"'>Eventos Registrados por mí");
             out.println("                  <i class='material-icons left'>event_available</i>");
             out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Todos los Eventos");
+            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaPeoximosEventos\"'>Todos los Eventos");
             out.println("                  <i class='material-icons left'>event</i>");
             out.println("           </button>");
             out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mis Eventos");

@@ -21,8 +21,24 @@
         <servlet-class>controladores.RegistroOrganizador</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>RegistroEvento</servlet-name>
+        <servlet-class>controladores.RegistroEvento</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>VistaRegistroOrganizador</servlet-name>
         <servlet-class>vista.VistaRegistroOrganizador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaRegistroEvento</servlet-name>
+        <servlet-class>vista.VistaRegistroEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaProximosEventos</servlet-name>
+        <servlet-class>vista.VistaProximosEventos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaEventosGestor</servlet-name>
+        <servlet-class>vista.VistaEventosGestor</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InicioDeSesion</servlet-name>
@@ -44,9 +60,25 @@
         <servlet-name>VistaRegistroOrganizador</servlet-name>
         <url-pattern>/VistaRegistroOrganizador</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>RegistroOrganizador</servlet-name>
         <url-pattern>/RegistroOrganizador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaRegistroEvento</servlet-name>
+        <url-pattern>/VistaRegistroEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroEvento</servlet-name>
+        <url-pattern>/RegistroEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaProximosEventos</servlet-name>
+        <url-pattern>/VistaProximosEventos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaEventosGestor</servlet-name>
+        <url-pattern>/VistaEventosGestor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
