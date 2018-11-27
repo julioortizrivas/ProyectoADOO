@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 public class RegistroOrganizador extends HttpServlet {
 
+    private String mensaje;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -20,7 +21,7 @@ public class RegistroOrganizador extends HttpServlet {
             out.println("<title>Servlet RegistroOrganizador</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistroUsuario at " + request.getContextPath() + "</h1>");
+            out.println("<h1>" + mensaje + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -40,7 +41,7 @@ public class RegistroOrganizador extends HttpServlet {
             Conector conexion=new Conector("eventos","root","localhost:3306","");
             conexion.conectar();   
             String query="INSERT INTO EVENTO_ORGANIZADORES VALUES('"+usuario+"','"+nombre+"');";
-            if(conexion.modificarDatos(query))
+            if((mensaje=conexion.modificarDatos(query)).equals("Petición realizada con éxito."))
             {
                     String query2="INSERT INTO ORGANIZADOR_CONTACTO VALUES('"+usuario+"','"+contacto+"');";
                     conexion.modificarDatos(query2);

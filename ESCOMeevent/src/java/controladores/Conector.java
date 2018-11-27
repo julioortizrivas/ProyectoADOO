@@ -52,19 +52,19 @@ public class Conector {
 	}
     }
 
-    public boolean modificarDatos(String sql)
+    public String modificarDatos(String sql)
     {
 	try
 	{
             Statement statement=conexion.createStatement();
             //String sql="DELETE FROM Perros;";
             statement.executeUpdate(sql);
-            return true;
+            return "Petición realizada con éxito.";
 	}
-	catch(Exception ex)
+	catch(SQLException ex)
 	{
             System.out.println("ERROR EN LA CONEXION"+ex+"  holi ");
-            return false;
+            return ex.getMessage();
 	}
     }
     public ResultSet recuperarDatos(String query)

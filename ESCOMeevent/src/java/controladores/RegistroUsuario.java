@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 public class RegistroUsuario extends HttpServlet {
+    private String mensaje;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -20,7 +21,7 @@ public class RegistroUsuario extends HttpServlet {
             out.println("<title>Servlet RegistroUsuario</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistroUsuario at " + request.getContextPath() + "</h1>");
+            out.println("<h1>"+ mensaje + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -45,7 +46,7 @@ public class RegistroUsuario extends HttpServlet {
             Conector conexion=new Conector("eventos","root","localhost:3306","");
             conexion.conectar();   
             String query="INSERT INTO usuario_reg VALUES('"+usuario+"','"+apPat+"','"+apMat+"','"+nombre+"','"+correo+"','"+telefono+"',AES_ENCRYPT('"+cont1+"', date(now())), date(now()), time(now()));";
-            if(conexion.modificarDatos(query))
+            if((mensaje=conexion.modificarDatos(query)).equals("Petición realizada con éxito."))
             {
                 if(request.getParameter("alumno")!=null)
                 {
@@ -58,7 +59,6 @@ public class RegistroUsuario extends HttpServlet {
                     out.println("<script>alert('Te has registrado exitosamente.')</Script>");
                     
                 }
-                    System.out.println("holi");
                     response.sendRedirect("VistaLogIn");
                 
                 

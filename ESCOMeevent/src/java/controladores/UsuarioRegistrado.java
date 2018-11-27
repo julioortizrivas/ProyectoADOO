@@ -16,9 +16,28 @@ public class UsuarioRegistrado {
             apMaterno=aM;
 	}
 
-	public boolean inscribirEvento(String claveE)
+	public String inscribirEvento(String claveE)
 	{
-		return true;
+            String mensaje="";
+            Conector conexion=new Conector("eventos","root","localhost:3306","");
+        String query="INSERT INTO usuario_reg_has_evento(idUsuario_reg, idEvento,Fecha,Hora) VALUES ('"+clave+"','"+claveE+"',date(now()),time(now()));";
+            try
+            {
+                conexion.conectar();
+
+                if((mensaje=conexion.modificarDatos(query)).equals("Petición realizada con éxito."))
+                {
+                        System.out.println("Hecho:"+query);
+
+
+                }
+            }
+            catch(Exception ex)
+            {
+                System.out.println("ERROR CON EVENTO:"+ex.toString()+"//"+query);
+            }
+                
+            return mensaje;
 	}
 	public boolean darBajaEvento(String claveE)
 	{

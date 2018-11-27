@@ -10,6 +10,7 @@ import java.sql.*;
 import javax.servlet.http.HttpSession;
 public class RegistroEvento extends HttpServlet {
     private Gestor ges;
+    private String mensaje="";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -21,7 +22,7 @@ public class RegistroEvento extends HttpServlet {
             out.println("<title>Servlet Registro Evento</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegistroUsuario at " + request.getContextPath() + "</h1>");
+            out.println("<h1>" + mensaje+ "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,7 +62,8 @@ public class RegistroEvento extends HttpServlet {
         else
         {
             ges=(Gestor)us;
-            ges.crearEvento(id, n, f, h, des, du, c, lu, ev, org);
+            
+            mensaje=ges.crearEvento(id, n, f, h, des, du, c, lu, ev, org);
             processRequest(request, response);
         }
         

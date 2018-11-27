@@ -40,6 +40,10 @@
         <servlet-name>VistaEventosGestor</servlet-name>
         <servlet-class>vista.VistaEventosGestor</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InscribirAEvento</servlet-name>
+        <servlet-class>controladores.InscribirAEvento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioDeSesion</servlet-name>
         <url-pattern>/InicioDeSesion</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>VistaEventosGestor</servlet-name>
         <url-pattern>/VistaEventosGestor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InscribirAEvento</servlet-name>
+        <url-pattern>/InscribirAEvento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

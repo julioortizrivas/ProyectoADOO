@@ -162,7 +162,7 @@ public class VistaProximosEventos extends HttpServlet {
                 out.println("      </div>");
                 out.println("      </div>");
                 out.println("      <div class='modal-footer black' >");
-                out.println("         <a href='#' class='modal-close waves-effect waves-green btn-flat light-green darken-2 white-text'>");
+                out.println("         <a method='post' href='InscribirAEvento?ev="+eventos.get(i).getClave()+"' class='modal-close waves-effect waves-green btn-flat light-green darken-2 white-text'>");
                 out.println("          <i class='large material-icons'>check_circle</i>Asistiré al evento");
                 out.println("        </a>");
                 out.println("      </div>");
