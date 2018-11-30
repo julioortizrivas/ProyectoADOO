@@ -109,13 +109,13 @@ public class VistaEventosGestor extends HttpServlet {
             out.println("            <div class='background'>");
             out.println("              <img src='img/f1.png'>");
             out.println("            </div>");
-            out.println("            <a><img class='circle' src='img/imgPerfil.jpg'></a>");
-            out.println("            <a><span class='white-text name'>Bienvenido(a):</span></a>");
+             out.println("            <a><img class='circle' src='img/imgPerfil.jpg'></a>");
+            out.println("            <a><span class='white-text name'>Bienvenido(a):"+ges.getNombre()+"</span></a>");
             out.println("          </div>");
             out.println("        </li>");
-            out.println("        <li><a href='#'>Inicio</a></li>");
-            out.println("        <li><a href='#'>Eventos</a></li>");
-            out.println("        <li><a href='#'>Usuarios</a></li>");
+            out.println("        <li><a href='RedireccionarInicio'>Inicio</a></li>");
+            out.println("        <li><a href='VistaProximosEventos'>Próximos Eventos</a></li>");
+            out.println("        <li><a href='CerrarSesion'>Cerrar Sesión</a></li>");
             out.println("        <li><a href='#'>Acerca de</a></li>");
             out.println("      </ul>");
             out.println("    </div>");
@@ -166,7 +166,7 @@ public class VistaEventosGestor extends HttpServlet {
                     out.println("      </div>");
                     out.println("      </div>");
                     out.println("      <div class='modal-footer black' >");
-                    out.println("        <a href='#!' class='modal-close waves-effect waves-green btn-flat light-green darken-2 white-text'>");
+                    out.println("        <a href='formModificarEvento?cev="+eventos.get(i).getClave()+"&nev="+eventos.get(i).getNombre()+"' class='modal-close waves-effect waves-green btn-flat light-green darken-2 white-text'>");
                     out.println("          <i class='large material-icons'>build</i>Modificar");
                     out.println("        </a>");
                     out.println("        <a href='#!' class='modal-close waves-effect waves-green btn-flat light-green darken-2 white-text'>");

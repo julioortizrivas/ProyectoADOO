@@ -65,7 +65,6 @@ public class VistaInicioGestor extends HttpServlet {
             out.println("		align-items:center;");
             out.println("		justify-content:left;");
             out.println("	  }");
-            out.println("");
             out.println("    </style>");
             out.println("    <!--Se usa para indicar que esta pagina sera responsive-->");
             out.println("    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>");
@@ -83,26 +82,39 @@ public class VistaInicioGestor extends HttpServlet {
             out.println("        <div class='card-content black-text'>");
             out.println("          <span class='card-title pink-text darken-3-text'>Bienvenido "+ges.getNombre()+" "+ges.getApPaterno()+"(Gestor):</span>");
             out.println("          <p>Selecciona la operación que quieres realizar</p>");
-            out.println("		  <div class='botones'>");
-            out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mi Perfil");
-            out.println("                  <i class='material-icons left'>account_circle</i>");
-            out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaRegistroEvento\"'>Nuevo Evento");
+            
+            
+            out.println("           <div class='botones'>");
+            out.println("           <div class='botonesGestor'>");
+            out.println("          <span class='card-title pink-text darken-3-text'>Operaciones como gestor</span>");
+            out.println("               <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaRegistroEvento\"'>Nuevo Evento");
             out.println("                  <i class='material-icons left'>event</i>");
-            out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaEventosGestor\"'>Eventos Registrados por mí");
+            out.println("               </button>");
+            out.println("		<button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaEventosGestor\"'>Eventos Registrados por mí");
             out.println("                  <i class='material-icons left'>event_available</i>");
-            out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaPeoximosEventos\"'>Todos los Eventos");
+            out.println("               </button>");
+            out.println("           </div>");
+            
+            out.println("       <div class='botonesGenerales'>");
+            out.println("          <span class='card-title pink-text darken-3-text'>Más opciones con tu cuenta</span>");
+            out.println("               <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mi Perfil");
+            out.println("                   <i class='material-icons left'>account_circle</i>");
+            out.println("               </button>");
+            
+            out.println("		<button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaPeoximosEventos\"'>Todos los Eventos");
             out.println("                  <i class='material-icons left'>event</i>");
-            out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mis Eventos");
+            out.println("               </button>");
+            out.println("		<button class='btn-large waves-effect waves-light' type='submit' name='action'>Mis Eventos");
             out.println("                  <i class='material-icons left'>event_available</i>");
-            out.println("           </button>");
-            out.println("           <button class='btn-large waves-effect waves-light red darken-4' type='submit' name='action' onClick='window.location=\"CerrarSesion\"'>Cerrar Sesión");
+            out.println("               </button>");
+            out.println("               <button class='btn-large waves-effect waves-light red darken-4' type='submit' name='action' onClick='window.location=\"CerrarSesion\"'>Cerrar Sesión");
             out.println("                  <i class='material-icons left'>close</i>");
-            out.println("           </button>");
-            out.println("		   </div>");
+            out.println("               </button>");
+            out.println("       </div>");
+            
+            out.println("       </div>");
+            
+            
             out.println("      </div>");
             out.println("    </div>");
             out.println("  </div>");

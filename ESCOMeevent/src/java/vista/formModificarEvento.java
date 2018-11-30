@@ -3,6 +3,7 @@ package vista;
 
 import controladores.Administrador;
 import controladores.Conector;
+import controladores.Evento;
 import controladores.Gestor;
 import controladores.UsuarioRegistrado;
 import java.io.IOException;
@@ -14,9 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class VistaRegistroEvento extends HttpServlet {
+public class formModificarEvento extends HttpServlet {
 
     private Gestor ges;
+    private Evento ev;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -81,7 +83,7 @@ public class VistaRegistroEvento extends HttpServlet {
             out.println("        <!--Zona para permitir la navegacion al usuario entre las pestanias-->");
             out.println("        <div class='col s12'>");
             out.println("          <a href='index.html' class='breadcrumb'>Home</a>");
-            out.println("          <a href='#!' class='breadcrumb'>Nuevo Evento</a>");
+            out.println("          <a href='#!' class='breadcrumb'>"+ev.getNombre()+"</a>");
             out.println("        </div>");
             out.println("      </div>");
             
@@ -112,28 +114,28 @@ public class VistaRegistroEvento extends HttpServlet {
             out.println("      <div class='card grey lighten-3'>");
             out.println("");
             out.println("        <div class='card-content black-text '>");
-            out.println("          <span class='card-title pink-text darken-3-text'>Nuevo evento</span>");
+            out.println("          <span class='card-title pink-text darken-3-text'>Evento "+ev.getNombre()+"</span>");
             out.println("          <p>Ingresa todos los datos del evento en el formulario. Recuerda que la información debe ser validada previamente. </p>");
-            out.println("          <form method='post' action='RegistroEvento'>");
+            out.println("          <form method='post' action='#'>");
             out.println("             <div class='row'>");
             out.println("              <div class='input-field col s12'>");
-            out.println("                <input  id='clvEvento' type='text'  name='clvEvento' class='validate' value='PDE-1' >");
+            out.println("                <input  id='clvEvento' type='text'  name='clvEvento' class='validate' value='"+ev.getClave()+"' readonly>");
             out.println("                <label class='active' for='usuario'>Clave de Evento</label>");
             out.println("              </div>");
             out.println("              <div class='input-field col s12'>");
-            out.println("                <input  id='nombre' type='text'  name='nombre' class='validate' onchange='generarClv()'>");
+            out.println("                <input  id='nombre' type='text'  name='nombre' class='validate' value='"+ev.getNombre()+"'>");
             out.println("                <label class='active' for='nombre'>Nombre del Evento</label>");
             out.println("              </div>");
             out.println("              <div class='input-field col s6'>");
-            out.println("                <input  id='fecha' type='date'  name='fecha' class='validate' >");
+            out.println("                <input  id='fecha' type='date'  name='fecha' class='validate' value='"+ev.getInfo().getFecha()+"'>");
             out.println("                <label class='active' for='fecha'>Fecha</label>");
             out.println("              </div>");
             out.println("              <div class='input-field col s6'>");
-            out.println("                <input  id='hora' type='time'  name='hora' class='validate' value='09:00:00' max='20:30:00' min='07:00:00' >");
+            out.println("                <input  id='hora' type='time'  name='hora' class='validate' value='"+ev.getInfo().getHora()+"' max='20:30:00' min='07:00:00' >");
             out.println("                <label class='active' for='hora'>Hora</label>");
             out.println("              </div>");
             out.println("              <div class='input-field col s6'>");
-            out.println("                <input  id='duracion' type='time'  name='duracion' class='validate' value='00:30:00' max='02:30:00' min='00:15:00' >");
+            out.println("                <input  id='duracion' type='time'  name='duracion' class='validate' value='"+ev.getInfo().getDuracion()+"' max='02:30:00' min='00:15:00' >");
             out.println("                <label class='active' for='duracion'>Duración:</label>");
             out.println("              </div>             ");
             out.println("              <div class='input-field col s6'>");
@@ -141,20 +143,24 @@ public class VistaRegistroEvento extends HttpServlet {
             out.println("                  <option value='' disabled selected>Escoge el lugar</option>");
             
             while(res3.next())
-                out.println("                  <option value='"+res3.getString(1)+"'>"+res3.getString(2)+"</option>");
-            
+            {   
+                String selec=(res3.getString(2).equals(ev.getInfo().getLugar()))?" selected ":"";
+                out.println("                  <option value='"+res3.getString(1)+"' "+selec+">"+res3.getString(2)+"</option>");
+            }  
             out.println("                </select>");
             out.println("              </div>");
             out.println("              <div class='input-field col s12'>");
-            out.println("                <input  id='capacidad' type='number'  name='capacidad' class='validate' min='10' max='150'>");
+            out.println("                <input  id='capacidad' type='number'  name='capacidad' class='validate' min='10' max='150' value='"+ev.getInfo().getCupo()+"'>");
             out.println("                <label class='active' for='capacidad'>Capacidad</label>");
             out.println("              </div>");
             out.println("              <div class='input-field col s6'>");
             out.println("                <select class='browser-default' name='org' id='org' >");
             out.println("                  <option value='' disabled selected>Escoge al organizador</option>");
             while(res2.next())
-                out.println("                  <option value='"+res2.getString(1)+"'>"+res2.getString(2)+"</option>");
-            
+            {   
+                String selec=(res2.getString(2).equals(ev.getInfo().getOrganizador()))?" selected ":"";
+                out.println("                  <option value='"+res2.getString(1)+"' "+selec+">"+res2.getString(2)+"</option>");
+            }  
             out.println("                </select>");
             out.println("              </div>");
             
@@ -163,14 +169,16 @@ public class VistaRegistroEvento extends HttpServlet {
             out.println("                <select class='browser-default' name='ev' id='ev' >");
             out.println("                  <option value='' disabled selected>Tipo de Evento</option>");
             while(res1.next())
-               out.println("                  <option value='"+res1.getString(1)+"'>"+res1.getString(2)+"</option>");
-            
+            {   
+                String selec=(res1.getString(2).equals(ev.getInfo().getTipo()))?" selected ":"";
+                out.println("                  <option value='"+res1.getString(1)+"' "+selec+">"+res1.getString(2)+"</option>");
+            }            
             out.println("                </select>");
             out.println("              </div>");
             
             
             out.println("               <div class='input-field col s12'>");
-            out.println("                <textarea id='desc' type='text'  name='desc' class='materialize-textarea' ></textarea> ");
+            out.println("                <textarea id='desc' type='text'  name='desc' class='materialize-textarea' value='"+ev.getInfo().getDesc()+"'></textarea> ");
             out.println("                <label class='active' for='desc'>Descripción</label>");
             out.println("              </div>");
             out.println("              <div class='file-field input-field col s12'>");
@@ -182,7 +190,11 @@ public class VistaRegistroEvento extends HttpServlet {
             out.println("                  <input class='file-path validate' type='text'>");
             out.println("                </div>");
             out.println("              </div>");
-            out.println("                <button class='btn waves-effect waves-light' type='submit' name='action'>Registrar");
+            
+             out.println("                <button class='btn waves-effect waves-light' type='button' name='action' onClick='window.location=\"RedireccionarInicio\"'>CancelarEvento");
+            out.println("                  <i class='material-icons right'>Cancelar evento</i>");
+            out.println("                </button>");
+            out.println("                <button class='btn waves-effect waves-light' type='submit' name='action'>Modificar");
             out.println("                  <i class='material-icons right'>send</i>");
             out.println("                </button>");
             out.println("              </div>");
@@ -248,7 +260,18 @@ public class VistaRegistroEvento extends HttpServlet {
         else
         {
             ges=(Gestor)us;
-            processRequest(request, response);
+            String cveEv=request.getParameter("cev");
+            String nomEv=request.getParameter("nev");
+            ev=new Evento(cveEv, nomEv);
+            if(ev.autenticarCreador(ges.getClave()))
+            {
+                 processRequest(request, response);
+            }
+            else
+            {
+                response.sendRedirect("VistaMensaje?mensaje=Este evento no te corresponde.");
+            }
+           
         }
         processRequest(request, response);
     }

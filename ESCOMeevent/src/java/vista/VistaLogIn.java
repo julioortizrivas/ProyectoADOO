@@ -54,6 +54,8 @@ public class VistaLogIn extends HttpServlet {
             out.println("  </head>");
             out.println("");
             out.println("  <body>");
+            
+            
             out.println("    <!--Seccion de la barra de navegacion.-->");
             out.println("    <nav class='indigo darken-4 nav-extended'>");
             out.println("      <div class='nav-wrapper'>");
@@ -66,7 +68,8 @@ public class VistaLogIn extends HttpServlet {
             out.println("          </li>");
             out.println("        </ul>  ");
             out.println("      </div>");
-            out.println("");
+            
+            
             out.println("      <div class='nav-content'>");
             out.println("        <!--Zona para permitir la navegacion al usuario entre las pestanias-->");
             out.println("        <div class='col s12'>");

@@ -9,6 +9,11 @@
         <servlet-class>vista.VistaLogIn</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>formModificarEvento</servlet-name>
+        <servlet-class>vista.formModificarEvento</servlet-class>
+    </servlet>
+    
+    <servlet>
         <servlet-name>VistaRegistroUsuario</servlet-name>
         <servlet-class>vista.VistaRegistroUsuario</servlet-class>
     </servlet>
@@ -115,6 +120,10 @@
     <servlet-mapping>
         <servlet-name>VistaMensaje</servlet-name>
         <url-pattern>/VistaMensaje</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formModificarEvento</servlet-name>
+        <url-pattern>/formModificarEvento</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RedireccionarInicio</servlet-name>
