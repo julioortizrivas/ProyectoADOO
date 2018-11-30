@@ -16,7 +16,6 @@ public class VistaMensaje extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             String mensaje=request.getParameter("mensaje");
             String icono="whatshot";
-            //icono=(mensaje.equals("Petición realizada con éxito."))?"offline_pin":"error";
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -71,7 +70,6 @@ public class VistaMensaje extends HttpServlet {
             out.println("          	<i class='material-icons left'>"+icono+"</i> ");
             out.println(mensaje);
             out.println("          </span>");
-            //out.println("          <p>"+mensaje+"</p>");
             out.println("		  <div class='botones'>");
             out.println("			  <button class='btn-large waves-effect waves-light' type='submit' name='action' onclick='history.back(1)'>Regresar");
             out.println("	                  <i class='material-icons left'>arrow_back</i>");
@@ -99,20 +97,6 @@ public class VistaMensaje extends HttpServlet {
         processRequest(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+   
 
 }

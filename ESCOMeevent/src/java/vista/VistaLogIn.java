@@ -1,11 +1,15 @@
 package vista;
 
+import controladores.Administrador;
+import controladores.Gestor;
+import controladores.UsuarioRegistrado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class VistaLogIn extends HttpServlet {
 
@@ -161,7 +165,26 @@ public class VistaLogIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession sesion=request.getSession();
+        UsuarioRegistrado us=(UsuarioRegistrado)sesion.getAttribute("usuario");
+        if(us==null)
+        {
+            System.out.println("No hay sesion iniciada");
+            processRequest(request, response);
+            
+        }
+        else if( us instanceof Gestor)
+        {
+            response.sendRedirect("VistaInicioGestor");
+        }
+        else if(us instanceof Administrador)
+        {
+            response.sendRedirect("VistaInicioAdmin");
+        }
+        else
+        {
+            response.sendRedirect("VistaInicioUsuario");
+        }
     }
 
     @Override

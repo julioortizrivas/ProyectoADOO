@@ -60,6 +60,10 @@
         <servlet-name>DarDeBajaEvento</servlet-name>
         <servlet-class>controladores.DarDeBajaEvento</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CerrarSesion</servlet-name>
+        <servlet-class>controladores.CerrarSesion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioDeSesion</servlet-name>
         <url-pattern>/InicioDeSesion</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>DarDeBajaEvento</servlet-name>
         <url-pattern>/DarDeBajaEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CerrarSesion</servlet-name>
+        <url-pattern>/CerrarSesion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

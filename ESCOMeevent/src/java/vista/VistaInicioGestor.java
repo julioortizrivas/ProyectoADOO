@@ -99,6 +99,9 @@ public class VistaInicioGestor extends HttpServlet {
             out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mis Eventos");
             out.println("                  <i class='material-icons left'>event_available</i>");
             out.println("           </button>");
+            out.println("           <button class='btn-large waves-effect waves-light red darken-4' type='submit' name='action' onClick='window.location=\"CerrarSesion\"'>Cerrar Sesión");
+            out.println("                  <i class='material-icons left'>close</i>");
+            out.println("           </button>");
             out.println("		   </div>");
             out.println("      </div>");
             out.println("    </div>");
