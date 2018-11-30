@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class InscribirAEvento extends HttpServlet {
- private String mensaje="";
- 
+public class RedireccionarInicio extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -20,20 +19,19 @@ public class InscribirAEvento extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet InscribirAEvento</title>");            
+            out.println("<title>Servlet RedireccionarInicio</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet InscribirAEvento at " + mensaje + "</h1>");
+            out.println("<h1>Servlet RedireccionarInicio at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-    
-   @Override
+   
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         HttpSession sesion=request.getSession();
         UsuarioRegistrado us=(UsuarioRegistrado)sesion.getAttribute("usuario");
         if(us==null)
@@ -41,25 +39,24 @@ public class InscribirAEvento extends HttpServlet {
             System.out.println("No hay sesion iniciada");
             response.sendRedirect("VistaLogIn");
         }
+        else if( us instanceof Gestor)
+        {
+            response.sendRedirect("VistaInicioGestor");
+        }
+        else if(us instanceof Administrador)
+        {
+            System.out.println("El tipo de usuario no es administrador");
+            response.sendRedirect("VistaInicioAdmin");
+        }
         else
         {
-              request.setCharacterEncoding("UTF-8");
-            mensaje=us.inscribirEvento((String)request.getParameter("ev"));
-            response.setContentType("text/html;charset=UTF-8");
-            response.sendRedirect("VistaMensaje?mensaje="+mensaje);
-            processRequest(request, response);
+            response.sendRedirect("VistaInicioUsuario");
         }
         
-        processRequest(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    
+   
+   
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -37,12 +37,28 @@
         <servlet-class>vista.VistaProximosEventos</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>VistaMisEventos</servlet-name>
+        <servlet-class>vista.VistaMisEventos</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>VistaEventosGestor</servlet-name>
         <servlet-class>vista.VistaEventosGestor</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>InscribirAEvento</servlet-name>
         <servlet-class>controladores.InscribirAEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaMensaje</servlet-name>
+        <servlet-class>vista.VistaMensaje</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RedireccionarInicio</servlet-name>
+        <servlet-class>controladores.RedireccionarInicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DarDeBajaEvento</servlet-name>
+        <servlet-class>controladores.DarDeBajaEvento</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InicioDeSesion</servlet-name>
@@ -81,12 +97,28 @@
         <url-pattern>/VistaProximosEventos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>VistaMisEventos</servlet-name>
+        <url-pattern>/VistaMisEventos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>VistaEventosGestor</servlet-name>
         <url-pattern>/VistaEventosGestor</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>InscribirAEvento</servlet-name>
         <url-pattern>/InscribirAEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaMensaje</servlet-name>
+        <url-pattern>/VistaMensaje</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RedireccionarInicio</servlet-name>
+        <url-pattern>/RedireccionarInicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DarDeBajaEvento</servlet-name>
+        <url-pattern>/DarDeBajaEvento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

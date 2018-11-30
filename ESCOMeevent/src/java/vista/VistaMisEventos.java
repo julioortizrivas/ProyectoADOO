@@ -1,8 +1,9 @@
-
 package vista;
 
+import controladores.Administrador;
 import controladores.Conector;
 import controladores.Evento;
+import controladores.UsuarioRegistrado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -11,8 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class VistaProximosEventos extends HttpServlet {
+public class VistaMisEventos extends HttpServlet {
 
     private ArrayList<Evento> eventos;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -160,8 +162,8 @@ public class VistaProximosEventos extends HttpServlet {
                 out.println("      </div>");
                 out.println("      </div>");
                 out.println("      <div class='modal-footer black' >");
-                out.println("         <a method='post' href='InscribirAEvento?ev="+eventos.get(i).getClave()+"' class='modal-close waves-effect waves-green btn-flat light-green darken-2 white-text'>");
-                out.println("          <i class='large material-icons'>check_circle</i>Asistiré al evento");
+                out.println("         <a method='post' href='DarDeBajaEvento?ev="+eventos.get(i).getClave()+"' class='modal-close waves-effect waves-green btn-flat light-green darken-2 white-text'>");
+                out.println("          <i class='large material-icons'>block</i>Cancelar asistencia");
                 out.println("        </a>");
                 out.println("      </div>");
                 out.println("    </div>");
@@ -195,7 +197,21 @@ public class VistaProximosEventos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            String query="SELECT idEvento,Nombre FROM EVENTO WHERE (Fecha>CURDATE() OR (Fecha=CURDATE() AND Hora>time(now())));";
+        
+        HttpSession sesion=request.getSession();
+        UsuarioRegistrado us=(UsuarioRegistrado)sesion.getAttribute("usuario");
+        
+        if(us==null)
+        {
+            System.out.println("No hay sesion iniciada");
+            response.sendRedirect("VistaLogIn");
+        }
+        else 
+        {
+            String query="SELECT USUARIO_REG_has_EVENTO.idEvento, EVENTO.Nombre FROM USUARIO_REG_has_EVENTO\n" +
+                        "INNER JOIN USUARIO_REG ON USUARIO_REG_has_EVENTO.idUsuario_reg = USUARIO_REG.idUSUARIO_REG\n" +
+                        "INNER JOIN EVENTO ON USUARIO_REG_has_EVENTO.idEvento = EVENTO.idEvento\n" +
+                        "WHERE USUARIO_REG.idUSUARIO_REG LIKE '"+us.getClave()+"';";
             Conector conexion=new Conector("eventos","root","localhost:3306","");
             ResultSet res1;
             try
@@ -214,9 +230,10 @@ public class VistaProximosEventos extends HttpServlet {
             }
             catch(Exception ex)
             {
-                
+                System.out.println("ERROR:");
             }
-        processRequest(request, response);
+            processRequest(request, response);
+        }
     }
 
 
