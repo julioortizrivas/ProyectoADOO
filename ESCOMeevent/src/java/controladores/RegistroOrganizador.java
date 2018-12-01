@@ -7,71 +7,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
+import javax.servlet.http.HttpSession;
 public class RegistroOrganizador extends HttpServlet {
 
     private String mensaje;
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegistroOrganizador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>" + mensaje + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+    private Administrador ad;
+    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
          response.setContentType("text/html;charset=UTF-8");
-        String usuario=(String)request.getParameter("clvOrg");
+        String clveOrg=(String)request.getParameter("clvOrg");
         String nombre=(String)request.getParameter("nombre");
         String contacto=(String)request.getParameter("contac");
                 
-        System.out.println("usuario"+usuario);
-        try
+       HttpSession sesion=request.getSession();
+        UsuarioRegistrado us=(UsuarioRegistrado)sesion.getAttribute("usuario");
+        if(us==null)
         {
-            Conector conexion=new Conector("eventos","root","localhost:3306","");
-            conexion.conectar();   
-            String query="INSERT INTO EVENTO_ORGANIZADORES VALUES('"+usuario+"','"+nombre+"');";
-            if((mensaje=conexion.modificarDatos(query)).equals("Petición realizada con éxito."))
-            {
-                    String query2="INSERT INTO ORGANIZADOR_CONTACTO VALUES('"+usuario+"','"+contacto+"');";
-                    conexion.modificarDatos(query2);
-               
-                try (PrintWriter out = response.getWriter()) 
-                {
-                    out.println("<script>alert('Te has registrado exitosamente.')</Script>");
-                    
-                }
-                    response.sendRedirect("VistaInicioAdmin");
-                
-                
-            }
-            else
-            {
-                try (PrintWriter out = response.getWriter()) 
-                {
-                    out.println("<script>");
-                    out.println("alert('El usuario ya existe');");
-                    out.println("window.history.back();");
-                    out.println("</Script>");
-                }
-                
-            }
-             
-            
+            System.out.println("No hay sesion iniciada");
+            response.sendRedirect("VistaLogIn");
         }
-        catch(Exception ex)
+        else if( us instanceof Gestor)
         {
-            
+            response.sendRedirect("VistaInicioGestor");
+        }
+        else if(!(us instanceof Administrador))
+        {
+            System.out.println("El tipo de usuario no es administrador");
+            response.sendRedirect("VistaInicioUsuario");
+        }
+        else
+        {
+            ad=(Administrador)us;
+            mensaje=ad.crearOrganizador(clveOrg, nombre, contacto);
+            response.sendRedirect("VistaMensaje?mensaje="+mensaje);
         }
         
         

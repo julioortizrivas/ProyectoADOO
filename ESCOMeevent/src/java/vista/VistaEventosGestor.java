@@ -142,8 +142,8 @@ public class VistaEventosGestor extends HttpServlet {
                     out.println("				  <blockquote>"+eventos.get(i).getInfo().getFecha()+","+eventos.get(i).getInfo().getHora()+"</blockquote>");
                     out.println("				</div>");
                     out.println("			</div>");
-                    out.println("			 <a class='btn-floating btn-large halfway-fab waves-effect waves-light teal modal-trigger' data-target='mInfo"+eventos.get(i).getClave()+"'>");
-                    out.println("			   <i class='material-icons'>add</i>");
+                    out.println("			 <a class='btn-floating btn-large halfway-fab waves-effect waves-light  modal-trigger orange accent-3' data-target='mInfo"+eventos.get(i).getClave()+"'>");
+                    out.println("			   <i class='material-icons '>add</i>");
                     out.println("			</a>");
                     out.println("		</div>");
 
@@ -166,11 +166,8 @@ public class VistaEventosGestor extends HttpServlet {
                     out.println("      </div>");
                     out.println("      </div>");
                     out.println("      <div class='modal-footer black' >");
-                    out.println("        <a href='formModificarEvento?cev="+eventos.get(i).getClave()+"&nev="+eventos.get(i).getNombre()+"' class='modal-close waves-effect waves-green btn-flat light-green darken-2 white-text'>");
+                    out.println("        <a href='formModificarEvento?cev="+eventos.get(i).getClave()+"&nev="+eventos.get(i).getNombre()+"' class='modal-close waves-effect waves-green btn-flat  orange accent-3 white-text'>");
                     out.println("          <i class='large material-icons'>build</i>Modificar");
-                    out.println("        </a>");
-                    out.println("        <a href='#!' class='modal-close waves-effect waves-green btn-flat light-green darken-2 white-text'>");
-                    out.println("          <i class='large material-icons'>block</i>Cancelar evento");
                     out.println("        </a>");
                     out.println("      </div>");
                     out.println("    </div>");

@@ -35,7 +35,7 @@ public class Gestor extends UsuarioRegistrado{
     {
         Conector conexion=new Conector("eventos","root","localhost:3306","");
         
-        String query="DELETE FROM EVENTO"
+        String query="DELETE FROM EVENTO "
                 + "WHERE idEvento LIKE '"+clvE+"';";
         String mensaje="";
         try
@@ -58,23 +58,23 @@ public class Gestor extends UsuarioRegistrado{
     {
         Conector conexion=new Conector("eventos","root","localhost:3306","");
         
-        String query="UPDATE EVENTO"
-                + "SET Nombre="+n+", "
-                + "Fecha="+f+", "
-                + "Hora="+h+", "
-                + "Descrip="+des+", "
-                + "Duarcion="+du+", "
+        String query="UPDATE EVENTO "
+                + "SET Nombre='"+n+"', "
+                + "Fecha='"+f+"', "
+                + "Hora='"+h+"', "
+                + "Descrip='"+des+"', "
+                + "Duarcion='"+du+"', "
                 + "Cupo="+c+", "
-                + "idLugar="+lu+", "
-                + "idTipo="+ti+", "
-                + "idOrganizador="+org+" "
+                + "idLugar='"+lu+"', "
+                + "idTipo='"+ti+"', "
+                + "idOrganizador='"+org+"' "
                 + "WHERE idEvento LIKE '"+id+"';";
                     
         String mensaje="";
         try
         {
             conexion.conectar();
-            System.out.println(id+","+n+","+f+","+h+","+des+","+du+","+c+","+lu+","+ti+","+org);
+            System.out.println(query);
             
             if((mensaje=conexion.modificarDatos(query)).equals("Petición realizada con éxito."))
             {

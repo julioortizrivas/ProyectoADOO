@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import javax.servlet.http.HttpSession;
-public class RegistroEvento extends HttpServlet {
+public class ModificarEvento extends HttpServlet {
     private Gestor ges;
     private String mensaje="";
     
@@ -48,9 +48,17 @@ public class RegistroEvento extends HttpServlet {
         else
         {
             ges=(Gestor)us;
+            Evento evento=new Evento(id,n);
+            if(evento.autenticarCreador(ges.getClave()))
+            {
+                mensaje=ges.modificarEvento(id, n, f, h, des, du, c, lu, ev, org);
+                response.sendRedirect("VistaMensaje?mensaje="+mensaje);
+            }
+            else
+            {
+                response.sendRedirect("VistaMensaje?mensaje=Este evento no esta asociado a tu usuario.");
+            }
             
-            mensaje=ges.crearEvento(id, n, f, h, des, du, c, lu, ev, org);
-            response.sendRedirect("VistaMensaje?mensaje="+mensaje);
         }
         
                   

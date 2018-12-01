@@ -5,6 +5,10 @@
         <servlet-class>controladores.InicioDeSesion</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ModificarEvento</servlet-name>
+        <servlet-class>controladores.ModificarEvento</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>VistaLogIn</servlet-name>
         <servlet-class>vista.VistaLogIn</servlet-class>
     </servlet>
@@ -12,7 +16,6 @@
         <servlet-name>formModificarEvento</servlet-name>
         <servlet-class>vista.formModificarEvento</servlet-class>
     </servlet>
-    
     <servlet>
         <servlet-name>VistaRegistroUsuario</servlet-name>
         <servlet-class>vista.VistaRegistroUsuario</servlet-class>
@@ -69,6 +72,14 @@
         <servlet-name>CerrarSesion</servlet-name>
         <servlet-class>controladores.CerrarSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CancelarEvento</servlet-name>
+        <servlet-class>controladores.CancelarEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formNuevoLugar</servlet-name>
+        <servlet-class>vista.formNuevoLugar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioDeSesion</servlet-name>
         <url-pattern>/InicioDeSesion</url-pattern>
@@ -92,6 +103,10 @@
     <servlet-mapping>
         <servlet-name>RegistroOrganizador</servlet-name>
         <url-pattern>/RegistroOrganizador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarEvento</servlet-name>
+        <url-pattern>/ModificarEvento</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>VistaRegistroEvento</servlet-name>
@@ -136,6 +151,14 @@
     <servlet-mapping>
         <servlet-name>CerrarSesion</servlet-name>
         <url-pattern>/CerrarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelarEvento</servlet-name>
+        <url-pattern>/CancelarEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formNuevoLugar</servlet-name>
+        <url-pattern>/formNuevoLugar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

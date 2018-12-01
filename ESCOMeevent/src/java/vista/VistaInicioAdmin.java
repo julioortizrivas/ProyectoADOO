@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 import controladores.Administrador;
@@ -17,10 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author vicle
- */
 @WebServlet(name = "VistaInicioAdmin", urlPatterns = {"/VistaInicioAdmin"})
 public class VistaInicioAdmin extends HttpServlet {
 
@@ -92,28 +84,55 @@ public class VistaInicioAdmin extends HttpServlet {
             out.println("        <div class='card-content black-text'>");
             out.println("          <span class='card-title pink-text darken-3-text'>Bienvenido "+ad.getNombre()+" "+ad.getApPaterno()+"(Administrador):</span>");
             out.println("          <p>Selecciona la operación que quieres realizar</p>");
-            out.println("		  <div class='botones'>");
-            out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mi Perfil");
-            out.println("                  <i class='material-icons left'>account_circle</i>");
-            out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Nuevo Administrador/Gestor");
-            out.println("                  <i class='material-icons left'>add_circle</i>");
-            out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Nuevo Lugar");
-            out.println("                  <i class='material-icons left'>add_circle</i>");
-            out.println("           </button>");
             
+            
+            
+            out.println("	<div class='botones'>");
+                      
+            out.println("           <div class='botonesAdmin'>");
+            out.println("          <span class='card-title pink-text darken-3-text'>Operaciones con Lugares</span>");
+            out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action'>Nuevo Lugar");
+            out.println("                   <i class='material-icons left'>add_circle</i>");
+            out.println("                 </button>");
+            out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mostrar Lugares");
+            out.println("                   <i class='material-icons left'>location_on</i>");
+            out.println("                 </button>");
+            out.println("           </div>");
+            
+            
+            
+            out.println("           <div class='botonesAdmin'>");
+            out.println("          <span class='card-title pink-text darken-3-text'>Operaciones con Organizadores</span>");
             
             out.println("		   <button class='btn-large waves-effect waves-light' type='button' name='action' onClick='window.location=\"VistaRegistroOrganizador\"'>Nuevo Organizador");
             out.println("                  <i class='material-icons left'>add_circle</i>");
             out.println("                   </button>");
-            
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mostrar Usuarios");
+            out.println("		   <button class='btn-large waves-effect waves-light' type='button' name='action' onClick='window.location=\"VistaRegistroOrganizador\"'>Mostrar Organizadores");
             out.println("                  <i class='material-icons left'>assignment_ind</i>");
-            out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mostrar Lugares");
-            out.println("                  <i class='material-icons left'>location_on</i>");
-            out.println("           </button>");
+            out.println("                   </button>");
+            
+      
+            out.println("           </div>");
+            
+            out.println("           <div class='botonesAdmin'>");
+            out.println("          <span class='card-title pink-text darken-3-text'>Operaciones con Usuarios</span>");
+            out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action'>Nuevo Administrador/Gestor");
+            out.println("                  <i class='material-icons left'>add_circle</i>");
+            out.println("                 </button>");
+            out.println("		 <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mostrar Usuarios");
+            out.println("                  <i class='material-icons left'>assignment_ind</i>");
+            out.println("                </button>");
+            
+            out.println("           </div>");
+            
+            
+            
+            out.println("           <div class='botonesAdmin'>");
+            out.println("          <span class='card-title pink-text darken-3-text'>Más opciones con tu cuenta</span>");
+            
+            out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mi Perfil");
+            out.println("                   <i class='material-icons left'>account_circle</i>");
+            out.println("                 </button>");
             out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Todos los Eventos");
             out.println("                  <i class='material-icons left'>event</i>");
             out.println("           </button>");
@@ -123,6 +142,16 @@ public class VistaInicioAdmin extends HttpServlet {
             out.println("           <button class='btn-large waves-effect waves-light red darken-4' type='submit' name='action' onClick='window.location=\"CerrarSesion\"'>Cerrar Sesión");
             out.println("                  <i class='material-icons left'>close</i>");
             out.println("           </button>");
+            
+            
+            out.println("           </div>");
+            
+            
+            
+            
+            out.println("           </div>");         
+            
+            
             out.println("		   </div>");
             out.println("      </div>");
             out.println("    </div>");

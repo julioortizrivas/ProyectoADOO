@@ -1,3 +1,4 @@
+
 package controladores;
 
 import java.io.IOException;
@@ -6,28 +7,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
 import javax.servlet.http.HttpSession;
-public class RegistroEvento extends HttpServlet {
+
+
+public class CancelarEvento extends HttpServlet {
     private Gestor ges;
     private String mensaje="";
-    
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         
-        response.setContentType("text/html;charset=UTF-8");
-        String id=(String)request.getParameter("clvEvento");
-        String n=(String)request.getParameter("nombre");
-        String f=(String)request.getParameter("fecha");
-        String h=(String)request.getParameter("hora");
-        String du=(String)request.getParameter("duracion");
-        String c=(String)request.getParameter("capacidad");
-        String lu=(String)request.getParameter("lu");
-        String org=(String)request.getParameter("org");
-        String ev=(String)request.getParameter("ev");
-        String des=(String)request.getParameter("desc");
+        String idev=(String)request.getParameter("idE");
+        String nev=(String)request.getParameter("nomE");
         
         HttpSession sesion=request.getSession();
         UsuarioRegistrado us=(UsuarioRegistrado)sesion.getAttribute("usuario");
@@ -48,12 +40,19 @@ public class RegistroEvento extends HttpServlet {
         else
         {
             ges=(Gestor)us;
+            Evento evento=new Evento(idev,nev);
+            if(evento.autenticarCreador(ges.getClave()))
+            {
+                mensaje=ges.darDeBajaEvento(idev);
+                response.sendRedirect("VistaMensaje?mensaje="+mensaje);
+            }
+            else
+            {
+                response.sendRedirect("VistaMensaje?mensaje=Este evento no esta asociado a tu usuario.");
+            }
             
-            mensaje=ges.crearEvento(id, n, f, h, des, du, c, lu, ev, org);
-            response.sendRedirect("VistaMensaje?mensaje="+mensaje);
         }
-        
-                  
     }
 
+    
 }
