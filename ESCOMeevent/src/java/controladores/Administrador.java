@@ -14,9 +14,8 @@ public class Administrador extends UsuarioRegistrado{
         {
             Conector conexion=new Conector("eventos","root","localhost:3306","");
             conexion.conectar();   
-            String query="INSERT INTO LUGAR VALUES('"+idLugar+"','"+nomLugar+"','"+ubiLugar+"','"+descLugar+"',"+cupo+",date(now()),time(now()));";
-            conexion.modificarDatos(query);
-           mensaje="Se ha registrado al lugar con éxito";
+            String query="INSERT INTO LUGAR VALUES('"+idLugar+"','"+nomLugar+"','"+ubiLugar+"','"+descLugar+"',"+cupo+",'"+clave+"',date(now()),time(now()));";
+            mensaje=conexion.modificarDatos(query);
         }
         catch(Exception ex)
         {
@@ -75,9 +74,9 @@ public class Administrador extends UsuarioRegistrado{
             conexion.conectar();   
             String query="INSERT INTO EVENTO_ORGANIZADORES VALUES('"+clveOrg+"','"+nomOrg+"');";
             String query2="INSERT INTO ORGANIZADOR_CONTACTO VALUES('"+clveOrg+"','"+contactOrg+"');";
-            conexion.modificarDatos(query);
+            mensaje=conexion.modificarDatos(query);
             conexion.modificarDatos(query2);
-            mensaje="Se ha registrado al organizador con éxito";
+            
         }
         catch(Exception ex)
         {

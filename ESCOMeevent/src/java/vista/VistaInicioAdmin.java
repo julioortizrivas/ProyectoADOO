@@ -91,7 +91,7 @@ public class VistaInicioAdmin extends HttpServlet {
                       
             out.println("           <div class='botonesAdmin'>");
             out.println("          <span class='card-title pink-text darken-3-text'>Operaciones con Lugares</span>");
-            out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action'>Nuevo Lugar");
+            out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"formNuevoLugar\"'>Nuevo Lugar");
             out.println("                   <i class='material-icons left'>add_circle</i>");
             out.println("                 </button>");
             out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mostrar Lugares");
@@ -107,7 +107,7 @@ public class VistaInicioAdmin extends HttpServlet {
             out.println("		   <button class='btn-large waves-effect waves-light' type='button' name='action' onClick='window.location=\"VistaRegistroOrganizador\"'>Nuevo Organizador");
             out.println("                  <i class='material-icons left'>add_circle</i>");
             out.println("                   </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='button' name='action' onClick='window.location=\"VistaRegistroOrganizador\"'>Mostrar Organizadores");
+            out.println("		   <button class='btn-large waves-effect waves-light' type='button' name='action' onClick='window.location=\"\"'>Mostrar Organizadores");
             out.println("                  <i class='material-icons left'>assignment_ind</i>");
             out.println("                   </button>");
             

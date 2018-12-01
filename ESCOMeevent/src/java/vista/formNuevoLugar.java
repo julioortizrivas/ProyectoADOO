@@ -1,18 +1,23 @@
 
 package vista;
 
+import controladores.Administrador;
+import controladores.Gestor;
+import controladores.UsuarioRegistrado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class formNuevoLugar extends HttpServlet {
-
+    private Administrador ad;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
            
@@ -90,7 +95,7 @@ public class formNuevoLugar extends HttpServlet {
             out.println("        <div class='card-content black-text '>");
             out.println("          <span class='card-title pink-text darken-3-text'>Nuevo Lugar</span>");
             out.println("          <p>En esta sección puedes agregar lugares que se encuentren habilitados dentro de la ESCOM para celebrar eventos. </p>");
-            out.println("          <form>");
+            out.println("          <form name='formLugar' action='RegistrarLugar' method='post'>");
             out.println("             <div class='row'>");
             out.println("              <div class='input-field col s12'>");
             out.println("                <input  id='clvLugar' type='text'  name='clvLugar' class='validate' value='----' required>");
@@ -155,7 +160,28 @@ public class formNuevoLugar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        HttpSession sesion=request.getSession();
+        UsuarioRegistrado us=(UsuarioRegistrado)sesion.getAttribute("usuario");
+        if(us==null)
+        {
+            System.out.println("No hay sesion iniciada");
+            response.sendRedirect("VistaLogIn");
+        }
+        else if( us instanceof Gestor)
+        {
+            response.sendRedirect("VistaInicioGestor");
+        }
+        else if(!(us instanceof Administrador))
+        {
+            System.out.println("El tipo de usuario no es administrador");
+            response.sendRedirect("VistaInicioUsuario");
+        }
+        else
+        {
+            ad=(Administrador)us;
+            processRequest(request, response);
+        }
     }
 
    
