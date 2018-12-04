@@ -2,14 +2,17 @@
 package controladores;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class Lugar {
     private String clave;
     private String nombre;
     private InfoLugar info;
+    
     public Lugar(String clvLu)
     {
         String query="SELECT idLugar,Nombre FROM LUGAR WHERE idLugar LIKE '"+clvLu+"';";
+        
         Conector conexion=new Conector("eventos","root","localhost:3306","");
         ResultSet res1;
         try
@@ -20,6 +23,8 @@ public class Lugar {
             clave=res1.getString(1);
             nombre=res1.getString(2);
             info=new InfoLugar(clvLu);
+            
+            
         }
         catch(Exception ex)
         {

@@ -1,5 +1,7 @@
 package controladores;
 
+import java.sql.ResultSet;
+
 public class UsuarioRegistrado {
     protected String clave;
     protected String nombre;
@@ -14,6 +16,30 @@ public class UsuarioRegistrado {
             nombre=n;
             apPaterno=aP;
             apMaterno=aM;
+	}
+        public UsuarioRegistrado(String clv)
+	{
+            String query="SELECT idUSUARIO_REG,Nombre,ApPat,ApMat FROM USUARIO_REG WHERE idUSUARIO_REG LIKE '"+clv+"';";
+            Conector conexion=new Conector("eventos","root","localhost:3306","");
+            ResultSet res1;
+            try
+            {
+                conexion.conectar();
+                res1=conexion.recuperarDatos(query);
+                if(res1.next())
+                {
+                    clave=res1.getString(1);
+                    nombre=res1.getString(2);
+                    apPaterno=res1.getString(3);
+                    apMaterno=res1.getString(4);
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                clave="ERROR";
+                clave="ERROR";
+            }
 	}
 
 	public String inscribirEvento(String claveE)

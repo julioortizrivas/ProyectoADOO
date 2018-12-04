@@ -158,12 +158,34 @@ public class VistaEventosGestor extends HttpServlet {
                     out.println("        <h5>"+eventos.get(i).getNombre()+"</h5>");
                     out.println("        <h6>Tipo de evento:"+eventos.get(i).getInfo().getTipo()+"</h6>");
                     out.println("		<ul>");
-                    out.println("			<li>Fecha:"+eventos.get(i).getInfo().getFecha()+"</li>");
-                    out.println("			<li>Hora:"+eventos.get(i).getInfo().getHora()+"</li>");
-                    out.println("			<li>Lugares Disponibles:"+eventos.get(i).getInfo().getCupo()+"</li>");
-                    out.println("			<li>Descripción del evento:"+eventos.get(i).getInfo().getDesc()+"</li>");
+                    out.println("			<li>Fecha:  "+eventos.get(i).getInfo().getFecha()+"</li>");
+                    out.println("			<li>Hora:  "+eventos.get(i).getInfo().getHora()+"</li>");
+                    out.println("			<li>Lugares Disponibles:  "+eventos.get(i).getInfo().getCupo()+"</li>");
+                    out.println("			<li>Descripción del evento:  "+eventos.get(i).getInfo().getDesc()+"</li>");
                     out.println("		</ul>");
+                    
+                    out.println("			 <div class='row'>");
+                     out.println("			 <p>Asistentes al evento:</p>");
+                    out.println("				 <ul class='collection'>");
+                    for (int j = 0; j < eventos.get(i).getAsistentes().size(); j++) {
+                            out.println("				 	<!--***********************************************************************-->");
+                            out.println("				    <li class='collection-item avatar'>");
+                            out.println("				      <i class='material-icons circle blue darken-2'>person</i>");
+                            out.println("				      <span class='title'>"+eventos.get(i).getAsistentes().get(j).getNombre()+" "+eventos.get(i).getAsistentes().get(j).getApPaterno()+"("+eventos.get(i).getAsistentes().get(j).getClave()+")</span>");
+  			      
+                               
+                            out.println("				    </li>");
+                            out.println("				    <!--***********************************************************************-->");
+                    }
+
+
+                    out.println("				</ul>");
+                    out.println("			</div>");
+                    
+                    
                     out.println("      </div>");
+                    
+                    
                     out.println("      </div>");
                     out.println("      <div class='modal-footer black' >");
                     out.println("        <a href='formModificarEvento?cev="+eventos.get(i).getClave()+"&nev="+eventos.get(i).getNombre()+"' class='modal-close waves-effect waves-green btn-flat  orange accent-3 white-text'>");
