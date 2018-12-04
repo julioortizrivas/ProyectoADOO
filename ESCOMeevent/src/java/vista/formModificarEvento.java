@@ -259,6 +259,7 @@ public class formModificarEvento extends HttpServlet {
         }
         else
         {
+            request.setCharacterEncoding("UTF-8");
             ges=(Gestor)us;
             String cveEv=request.getParameter("cev");
             String nomEv=request.getParameter("nev");

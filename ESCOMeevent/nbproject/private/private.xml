@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/vista/formListaOrganizadores.java</file>
-            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/vista/formModificarLugar.java</file>
-            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/vista/VistaInicioAdmin.java</file>
-            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/controladores/InfoLugar.java</file>
-            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/controladores/Lugar.java</file>
+            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/vista/VistaProximosEventos.java</file>
+            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/vista/VistaMisEventos.java</file>
             <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/vista/formListaLugares.java</file>
         </group>
     </open-files>

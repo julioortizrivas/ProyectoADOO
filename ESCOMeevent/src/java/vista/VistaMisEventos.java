@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 public class VistaMisEventos extends HttpServlet {
 
     private ArrayList<Evento> eventos;
+    private UsuarioRegistrado us;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -100,6 +101,8 @@ public class VistaMisEventos extends HttpServlet {
             out.println("        </div>");
             out.println("      </div>");
             out.println("    </nav>");
+            
+            
             out.println("    <div class='container white'>");
             out.println("      <ul id='menu' class='sidenav'>");
             out.println("        <li>");
@@ -108,22 +111,24 @@ public class VistaMisEventos extends HttpServlet {
             out.println("              <img src='img/f1.png'>");
             out.println("            </div>");
             out.println("            <a><img class='circle' src='img/imgPerfil.jpg'></a>");
-            out.println("            <a><span class='white-text name'>Bienvenido(a):</span></a>");
+            out.println("            <a><span class='white-text name'>Bienvenido(a):"+us.getNombre()+"</span></a>");
             out.println("          </div>");
             out.println("        </li>");
-            out.println("        <li><a href='#'>Inicio</a></li>");
-            out.println("        <li><a href='#'>Eventos</a></li>");
-            out.println("        <li><a href='#'>Usuarios</a></li>");
+            out.println("        <li><a href='RedireccionarInicio'>Inicio</a></li>");
+            out.println("        <li><a href='VistaProximosEventos'>Próximos Eventos</a></li>");
+            out.println("        <li><a href='CerrarSesion'>Cerrar Sesión</a></li>");
             out.println("        <li><a href='#'>Acerca de</a></li>");
             out.println("      </ul>");
             out.println("    </div>");
+            
+            
             out.println("	<div class='row'>");
             out.println("    <div class='col s10 m10 offset-m1 offset-s1'>");
             out.println("      <div class='card grey lighten-3'>");
             out.println("");
             out.println("        <div class='card-content black-text'>");
-            out.println("          <span class='card-title pink-text darken-3-text'>Nuestros Próximos Eventos:</span>");
-            out.println("          <p>Aquí puedes verificar todos los eventos que ESCOM tiene planeados para tí</p>");
+            out.println("          <span class='card-title pink-text darken-3-text'>Tus Eventos:</span>");
+            out.println("          <p>Aquí puedes verificar a qué eventos te has inscrito.</p>");
             out.println("		 <div class='row'>");
             out.println("<!--***********************************************************************-->");
             for (int i = 0; i < eventos.size(); i++) {
@@ -199,7 +204,7 @@ public class VistaMisEventos extends HttpServlet {
         
         
         HttpSession sesion=request.getSession();
-        UsuarioRegistrado us=(UsuarioRegistrado)sesion.getAttribute("usuario");
+        us=(UsuarioRegistrado)sesion.getAttribute("usuario");
         
         if(us==null)
         {

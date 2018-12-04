@@ -89,7 +89,9 @@ public class VistaInicioUsuario extends HttpServlet {
             out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action' >Mi Perfil");
             out.println("                  <i class='material-icons left'>account_circle</i>");
             out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaProximosEventos\"'>Todos los Eventos");
+            
+            
+            out.println("           <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaProximosEventos\"'>Todos los Eventos");
             out.println("                  <i class='material-icons left'>event</i>");
             out.println("           </button>");
             out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaMisEventos\"'>Mis Eventos");
