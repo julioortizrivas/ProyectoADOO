@@ -17,10 +17,12 @@ public class RegistroOrganizador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
+        request.setCharacterEncoding("UTF-8");
          response.setContentType("text/html;charset=UTF-8");
         String clveOrg=(String)request.getParameter("clvOrg");
         String nombre=(String)request.getParameter("nombre");
         String contacto=(String)request.getParameter("contac");
+        System.out.println("Prueba:"+contacto);
                 
        HttpSession sesion=request.getSession();
         UsuarioRegistrado us=(UsuarioRegistrado)sesion.getAttribute("usuario");

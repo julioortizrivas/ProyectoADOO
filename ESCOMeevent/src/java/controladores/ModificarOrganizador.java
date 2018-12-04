@@ -36,6 +36,7 @@ public class ModificarOrganizador extends HttpServlet {
         {
             ad=(Administrador)us;
             response.setContentType("text/html;charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             String clave=(String)request.getParameter("clvOrg");
             String nombre=(String)request.getParameter("nombre");
             String contacto=(String)request.getParameter("contac");

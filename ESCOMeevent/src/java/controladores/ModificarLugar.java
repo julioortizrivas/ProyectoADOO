@@ -34,6 +34,7 @@ public class ModificarLugar extends HttpServlet {
         else
         {
             ad=(Administrador)us;
+            request.setCharacterEncoding("UTF-8");
             String id=(String)request.getParameter("clvLugar");
             String n=(String)request.getParameter("nombre");
             String ubi=(String)request.getParameter("ubi");
