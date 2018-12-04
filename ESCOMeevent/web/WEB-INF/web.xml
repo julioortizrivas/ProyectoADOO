@@ -17,6 +17,10 @@
         <servlet-class>vista.formModificarEvento</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>formModificarOrganizador</servlet-name>
+        <servlet-class>vista.formModificarOrganizador</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>VistaRegistroUsuario</servlet-name>
         <servlet-class>vista.VistaRegistroUsuario</servlet-class>
     </servlet>
@@ -95,6 +99,22 @@
     <servlet>
         <servlet-name>formModificarLugar</servlet-name>
         <servlet-class>vista.formModificarLugar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarOrganizador</servlet-name>
+        <servlet-class>controladores.ModificarOrganizador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarLugar</servlet-name>
+        <servlet-class>controladores.EliminarLugar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarOrganizador</servlet-name>
+        <servlet-class>controladores.EliminarOrganizador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarLugar</servlet-name>
+        <servlet-class>controladores.ModificarLugar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InicioDeSesion</servlet-name>
@@ -191,6 +211,26 @@
     <servlet-mapping>
         <servlet-name>formModificarLugar</servlet-name>
         <url-pattern>/formModificarLugar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formModificarOrganizador</servlet-name>
+        <url-pattern>/formModificarOrganizador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarOrganizador</servlet-name>
+        <url-pattern>/ModificarOrganizador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarLugar</servlet-name>
+        <url-pattern>/EliminarLugar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarOrganizador</servlet-name>
+        <url-pattern>/EliminarOrganizador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarLugar</servlet-name>
+        <url-pattern>/ModificarLugar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

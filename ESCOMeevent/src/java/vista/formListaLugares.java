@@ -1,9 +1,11 @@
 
 package vista;
 
+import controladores.Administrador;
 import controladores.Conector;
 import controladores.Evento;
 import controladores.Lugar;
+import controladores.UsuarioRegistrado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -12,9 +14,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class formListaLugares extends HttpServlet {
     private ArrayList<Lugar> lugares;
+    private UsuarioRegistrado us;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -99,6 +103,8 @@ public class formListaLugares extends HttpServlet {
             out.println("        </div>");
             out.println("      </div>");
             out.println("    </nav>");
+            
+            
             out.println("    <div class='container white'>");
             out.println("      <ul id='menu' class='sidenav'>");
             out.println("        <li>");
@@ -107,15 +113,17 @@ public class formListaLugares extends HttpServlet {
             out.println("              <img src='img/f1.png'>");
             out.println("            </div>");
             out.println("            <a><img class='circle' src='img/imgPerfil.jpg'></a>");
-            out.println("            <a><span class='white-text name'>Bienvenido(a):</span></a>");
+            out.println("            <a><span class='white-text name'>Bienvenido(a):"+ ((us!=null && us instanceof Administrador)?us.getNombre():"")+"</span></a>");
             out.println("          </div>");
             out.println("        </li>");
-            out.println("        <li><a href='#'>Inicio</a></li>");
-            out.println("        <li><a href='#'>Eventos</a></li>");
-            out.println("        <li><a href='#'>Usuarios</a></li>");
+            out.println("        <li><a href='RedireccionarInicio'>Inicio</a></li>");
+            out.println("        <li><a href='VistaProximosEventos'>Próximos Eventos</a></li>");
+            out.println("        <li>"+ ((us!=null && us instanceof Administrador)?"<a href='CerrarSesion'>Cerrar Sesión</a>":"<a href=''>Usuarios</a>")+"</li>");
             out.println("        <li><a href='#'>Acerca de</a></li>");
             out.println("      </ul>");
-            out.println("    </div>");
+            out.println("    </div>");  
+            
+            
             out.println("	<div class='row'>");
             out.println("    <div class='col s10 m10 offset-m1 offset-s1'>");
             out.println("      <div class='card grey lighten-3'>");
@@ -125,44 +133,32 @@ public class formListaLugares extends HttpServlet {
             out.println("          <p>Aquí puedes visualizar todos los lugares donde se pueden llevar a cabo eventos deontro de la ESCOM</p>");
             out.println("		 <div class='row'>");
             out.println("<!--***********************************************************************-->");
+            
+            out.println("				 <ul class='collection'>");
             for (int i = 0; i < lugares.size(); i++) {
-                out.println("		 <div class='card ev col s6'>");
-                out.println("			 <div class='card-content row'>");
-                out.println("				<div class='col s4'>");
-                out.println("				  <img src='img/imgEventos.jpg' class='circle responsive-img' >");
-                out.println("				</div>");
-                out.println("				<div class='col s8'>");
-                out.println("				  <h5 class='header'>"+lugares.get(i).getNombre()+"</h5>");			  
-                out.println("				</div>");
-                out.println("			</div>");
-                out.println("			 <a class='btn-floating btn-large halfway-fab waves-effect waves-light teal modal-trigger' data-target='mInfo"+lugares.get(i).getClave()+"'>");
-                out.println("			   <i class='material-icons'>add</i>");
-                out.println("			</a>");
-                out.println("		</div>");
-            
-                out.println("	<!--***********************************************************************-->");
-            
-                out.println("    <div id='mInfo"+lugares.get(i).getClave()+"' class='modal grey darken-1' >");
-                out.println("      <div class='modal-content row' >");
-                out.println("        <div class='col s6 offset-s3' >");
-                out.println("          <img class='circle responsive-img' src='img/imgEventos.jpg'>");
-                out.println("        </div>");
-                out.println("      <div class='col s12'>");
-                out.println("        <h5>"+lugares.get(i).getNombre()+"</h5>");
-                out.println("		<ul>");
-                out.println("			<li>Ubicación: "+lugares.get(i).getInfo().getUbicacion()+"</li>");
-                out.println("			<li>Cupo: "+lugares.get(i).getInfo().getCupo()+"</li>");
-                out.println("			<li>Descripción :"+lugares.get(i).getInfo().getDescripcion()+"</li>");
-                out.println("		</ul>");
-                out.println("      </div>");
-                out.println("      </div>");
-                out.println("      <div class='modal-footer black' >");
-                out.println("         <a method='post' href='formModificarLugar?ev="+lugares.get(i).getClave()+"' class='modal-close waves-effect waves-green btn-flat light-green darken-2 white-text'>");
-                out.println("          <i class='large material-icons'>build</i>Modificar Lugar");
-                out.println("        </a>");
-                out.println("      </div>");
-                out.println("    </div>");
+                
+                
+                
+                out.println("				 	<!--***********************************************************************-->");
+                    out.println("				    <li class='collection-item avatar'>");
+                    out.println("				      <i class='material-icons circle blue darken-2'>store</i>");
+                    out.println("				      <span class='title'>"+lugares.get(i).getNombre()+
+                            ((us!=null && us instanceof Administrador)?"("+lugares.get(i).getClave()+")":"")+"</span>");
+                    out.println("				      <p>Descripción: <br>");
+                    out.println(lugares.get(i).getInfo().getDescripcion());
+                    out.println("				      <br>Cupo: <br>");
+                    out.println(lugares.get(i).getInfo().getCupo());
+                    out.println("				      <br>Ubicación: <br>");
+                    out.println(lugares.get(i).getInfo().getUbicacion());
+                    
+                    out.println("				      </p>");
+                    if(us!=null && us instanceof Administrador)
+                        out.println("				      <a href='formModificarLugar?Lugar="+lugares.get(i).getClave()+"' class='secondary-content' onclick='\"\"'><i class='material-icons'>build</i></a>");
+                    out.println("				    </li>");
+                    out.println("				    <!--***********************************************************************-->");
+               
             }
+            out.println("				</ul>");
             out.println("		<!--***********************************************************************-->");
             out.println("    </div>");
             out.println("  </div>");
@@ -196,9 +192,12 @@ public class formListaLugares extends HttpServlet {
         String query="SELECT idLugar FROM LUGAR;";
             Conector conexion=new Conector("eventos","root","localhost:3306","");
             ResultSet res1;
+            HttpSession sesion=request.getSession();
+            us=(UsuarioRegistrado)sesion.getAttribute("usuario");
             try
             {
-               conexion.conectar();
+                
+                conexion.conectar();
                 res1=conexion.recuperarDatos(query);
                 lugares=new ArrayList<Lugar>();
                 while(res1.next())
@@ -210,13 +209,13 @@ public class formListaLugares extends HttpServlet {
                 for (int i = 0; i < lugares.size(); i++) {
                     System.out.println("lugar:"+lugares.get(i).getClave());
                 }
+                
             }
             catch(Exception ex)
             {
                 
             }
-        processRequest(request, response);
-        processRequest(request, response);
+            processRequest(request, response);
     }
 
     /**

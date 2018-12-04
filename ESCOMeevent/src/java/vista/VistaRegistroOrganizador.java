@@ -1,13 +1,18 @@
 
 package vista;
 
+import controladores.Administrador;
+import controladores.Gestor;
+import controladores.UsuarioRegistrado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 public class VistaRegistroOrganizador extends HttpServlet {
+    private Administrador ad;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -69,6 +74,8 @@ public class VistaRegistroOrganizador extends HttpServlet {
             out.println("        </div>");
             out.println("      </div>");
             out.println("    </nav>");
+            
+            
             out.println("    <div class='container white'>");
             out.println("      <ul id='menu' class='sidenav'>");
             out.println("        <li>");
@@ -77,16 +84,18 @@ public class VistaRegistroOrganizador extends HttpServlet {
             out.println("              <img src='img/f1.png'>");
             out.println("            </div>");
             out.println("            <a><img class='circle' src='img/imgPerfil.jpg'></a>");
-            out.println("            <a><span class='white-text name'>Bienvenido(a):</span></a>");
-            out.println("            <!--<a><span class='white-text name'><h3></h3></span></a>-->");
+            out.println("            <a><span class='white-text name'>Bienvenido(a):"+ad.getNombre()+"</span></a>");
             out.println("          </div>");
             out.println("        </li>");
-            out.println("        <li><a href='#'>Inicio</a></li>");
-            out.println("        <li><a href='#'>Eventos</a></li>");
-            out.println("        <li><a href='#'>Usuarios</a></li>");
+            out.println("        <li><a href='RedireccionarInicio'>Inicio</a></li>");
+            out.println("        <li><a href='VistaProximosEventos'>Próximos Eventos</a></li>");
+            out.println("        <li><a href='CerrarSesion'>Cerrar Sesión</a></li>");
             out.println("        <li><a href='#'>Acerca de</a></li>");
             out.println("      </ul>");
             out.println("    </div>");
+            
+            
+            
             out.println("    <!--");
             out.println("        Colocar a partir de estas lineas el contenido de la pagina");
             out.println("    -->");
@@ -149,43 +158,41 @@ public class VistaRegistroOrganizador extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        HttpSession sesion=request.getSession();
+        UsuarioRegistrado us=(UsuarioRegistrado)sesion.getAttribute("usuario");
+        if(us==null)
+        {
+            System.out.println("No hay sesion iniciada");
+            response.sendRedirect("VistaLogIn");
+        }
+        else if( us instanceof Gestor)
+        {
+            response.sendRedirect("VistaInicioGestor");
+        }
+        else if(us instanceof Administrador)
+        {
+            ad=(Administrador)us;
+            processRequest(request, response);
+        }
+        else
+        {
+            
+            System.out.println("El tipo de usuario no es administrador");
+            response.sendRedirect("VistaInicioUsuario");
+        }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+    
 
 }

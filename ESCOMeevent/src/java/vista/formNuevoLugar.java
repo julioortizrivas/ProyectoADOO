@@ -72,6 +72,8 @@ public class formNuevoLugar extends HttpServlet {
             out.println("      </div>");
             out.println("     ");
             out.println("    </nav>");
+            
+            
             out.println("    <div class='container white'>");
             out.println("      <ul id='menu' class='sidenav'>");
             out.println("        <li>");
@@ -80,15 +82,16 @@ public class formNuevoLugar extends HttpServlet {
             out.println("              <img src='img/f1.png'>");
             out.println("            </div>");
             out.println("            <a><img class='circle' src='img/imgPerfil.jpg'></a>");
-            out.println("            <a><span class='white-text name'>Bienvenido(a):</span></a>");
+            out.println("            <a><span class='white-text name'>Bienvenido(a):"+ad.getNombre()+"</span></a>");
             out.println("          </div>");
             out.println("        </li>");
-            out.println("        <li><a href='#'>Inicio</a></li>");
-            out.println("        <li><a href='#'>Eventos</a></li>");
-            out.println("        <li><a href='#'>Usuarios</a></li>");
+            out.println("        <li><a href='RedireccionarInicio'>Inicio</a></li>");
+            out.println("        <li><a href='VistaProximosEventos'>Próximos Eventos</a></li>");
+            out.println("        <li><a href='CerrarSesion'>Cerrar Sesión</a></li>");
             out.println("        <li><a href='#'>Acerca de</a></li>");
             out.println("      </ul>");
             out.println("    </div>");
+            
             out.println("   <div class='row'>");
             out.println("    <div class='col s12 offset-m3 m6'>");
             out.println("      <div class='card grey lighten-3'>");

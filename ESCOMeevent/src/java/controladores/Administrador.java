@@ -36,8 +36,8 @@ public class Administrador extends UsuarioRegistrado{
                     + "Descrip='"+descLugar+"',"
                     + "Cupo="+cupo+" "+
                     "WHERE idLugar LIKE '"+idLugar+"';";
-            conexion.modificarDatos(query);
-           mensaje="Se ha modificado el lugar con éxito";
+            mensaje=conexion.modificarDatos(query);
+           
         }
         catch(Exception ex)
         {
@@ -54,8 +54,8 @@ public class Administrador extends UsuarioRegistrado{
             conexion.conectar();   
             String query="DELETE FROM LUGAR "
                     + "WHERE idLugar LIKE '"+idLugar+"';";
-            conexion.modificarDatos(query);
-           mensaje="Se ha modificado el lugar con éxito";
+            mensaje=conexion.modificarDatos(query);
+          
         }
         catch(Exception ex)
         {
@@ -95,9 +95,8 @@ public class Administrador extends UsuarioRegistrado{
                     "SET Nombre='"+nomOrg+"' WHERE idOrganizador LIKE '"+clveOrg+"';";
             String query2="UPDATE ORGANIZADOR_CONTACTO "+
                     "SET Contacto='"+contactOrg+"' WHERE idOrganizador LIKE '"+clveOrg+"';";
-            conexion.modificarDatos(query);
+            mensaje=conexion.modificarDatos(query);
             conexion.modificarDatos(query2);
-            mensaje="Se ha modificado al organizador con éxito";
         }
         catch(Exception ex)
         {
@@ -117,8 +116,8 @@ public class Administrador extends UsuarioRegistrado{
             String query2="DELETE FROM ORGANIZADOR_CONTACTO "+
                     "WHERE idOrganizador LIKE '"+clveOrg+"';";
             conexion.modificarDatos(query2);
-            conexion.modificarDatos(query);
-            mensaje="Se ha modificado al organizador con éxito";
+            mensaje=conexion.modificarDatos(query);
+            
         }
         catch(Exception ex)
         {
