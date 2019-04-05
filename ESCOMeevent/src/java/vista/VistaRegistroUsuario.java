@@ -150,14 +150,14 @@ public class VistaRegistroUsuario extends HttpServlet {
             out.println("                              <input  id='telefono' type='text'  name='telefono' class='validate' >");
             out.println("                              <label class='active' for='telefono'>Teléfono</label>");
             out.println("                            </div>");
-            out.println("                            <div class='input-field col s12'>");
+          /*  out.println("                            <div class='input-field col s12'>");
             out.println("                              <p><label>");
             out.println("                                 <input type='checkbox' name='alumno' id='alumno' value='alumno' onchange='actualizar()'/>");
             out.println("                                 <span>Soy alumno de la escuela.</span>");
             out.println("                              </label></p>");
             out.println("                            </div>");
             out.println("                           <div class='input-field col s12' id='semestre' name='semestre'>");
-            out.println("                            </div>");
+            out.println("                            </div>");*/
             out.println("                              <button class='btn waves-effect waves-light' type='submit' name='action'>Registrar");
             out.println("                                <i class='material-icons right'>send</i>");
             out.println("                              </button>");

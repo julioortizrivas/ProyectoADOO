@@ -5,8 +5,20 @@
         <servlet-class>controladores.InicioDeSesion</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ModificarEvento</servlet-name>
+        <servlet-class>controladores.ModificarEvento</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>VistaLogIn</servlet-name>
         <servlet-class>vista.VistaLogIn</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formModificarEvento</servlet-name>
+        <servlet-class>vista.formModificarEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formModificarOrganizador</servlet-name>
+        <servlet-class>vista.formModificarOrganizador</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>VistaRegistroUsuario</servlet-name>
@@ -15,6 +27,94 @@
     <servlet>
         <servlet-name>RegistroUsuario</servlet-name>
         <servlet-class>controladores.RegistroUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistroOrganizador</servlet-name>
+        <servlet-class>controladores.RegistroOrganizador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistroEvento</servlet-name>
+        <servlet-class>controladores.RegistroEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaRegistroOrganizador</servlet-name>
+        <servlet-class>vista.VistaRegistroOrganizador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaRegistroEvento</servlet-name>
+        <servlet-class>vista.VistaRegistroEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaProximosEventos</servlet-name>
+        <servlet-class>vista.VistaProximosEventos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaMisEventos</servlet-name>
+        <servlet-class>vista.VistaMisEventos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaEventosGestor</servlet-name>
+        <servlet-class>vista.VistaEventosGestor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InscribirAEvento</servlet-name>
+        <servlet-class>controladores.InscribirAEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VistaMensaje</servlet-name>
+        <servlet-class>vista.VistaMensaje</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RedireccionarInicio</servlet-name>
+        <servlet-class>controladores.RedireccionarInicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DarDeBajaEvento</servlet-name>
+        <servlet-class>controladores.DarDeBajaEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CerrarSesion</servlet-name>
+        <servlet-class>controladores.CerrarSesion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancelarEvento</servlet-name>
+        <servlet-class>controladores.CancelarEvento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formNuevoLugar</servlet-name>
+        <servlet-class>vista.formNuevoLugar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistrarLugar</servlet-name>
+        <servlet-class>controladores.RegistrarLugar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formListaLugares</servlet-name>
+        <servlet-class>vista.formListaLugares</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formListaOrganizadores</servlet-name>
+        <servlet-class>vista.formListaOrganizadores</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formModificarLugar</servlet-name>
+        <servlet-class>vista.formModificarLugar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarOrganizador</servlet-name>
+        <servlet-class>controladores.ModificarOrganizador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarLugar</servlet-name>
+        <servlet-class>controladores.EliminarLugar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarOrganizador</servlet-name>
+        <servlet-class>controladores.EliminarOrganizador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificarLugar</servlet-name>
+        <servlet-class>controladores.ModificarLugar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InicioDeSesion</servlet-name>
@@ -31,6 +131,106 @@
     <servlet-mapping>
         <servlet-name>RegistroUsuario</servlet-name>
         <url-pattern>/RegistroUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaRegistroOrganizador</servlet-name>
+        <url-pattern>/VistaRegistroOrganizador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroOrganizador</servlet-name>
+        <url-pattern>/RegistroOrganizador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarEvento</servlet-name>
+        <url-pattern>/ModificarEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaRegistroEvento</servlet-name>
+        <url-pattern>/VistaRegistroEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroEvento</servlet-name>
+        <url-pattern>/RegistroEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaProximosEventos</servlet-name>
+        <url-pattern>/VistaProximosEventos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaMisEventos</servlet-name>
+        <url-pattern>/VistaMisEventos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaEventosGestor</servlet-name>
+        <url-pattern>/VistaEventosGestor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InscribirAEvento</servlet-name>
+        <url-pattern>/InscribirAEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VistaMensaje</servlet-name>
+        <url-pattern>/VistaMensaje</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formModificarEvento</servlet-name>
+        <url-pattern>/formModificarEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RedireccionarInicio</servlet-name>
+        <url-pattern>/RedireccionarInicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DarDeBajaEvento</servlet-name>
+        <url-pattern>/DarDeBajaEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CerrarSesion</servlet-name>
+        <url-pattern>/CerrarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelarEvento</servlet-name>
+        <url-pattern>/CancelarEvento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formNuevoLugar</servlet-name>
+        <url-pattern>/formNuevoLugar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistrarLugar</servlet-name>
+        <url-pattern>/RegistrarLugar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formListaLugares</servlet-name>
+        <url-pattern>/formListaLugares</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formListaOrganizadores</servlet-name>
+        <url-pattern>/formListaOrganizadores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formModificarLugar</servlet-name>
+        <url-pattern>/formModificarLugar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formModificarOrganizador</servlet-name>
+        <url-pattern>/formModificarOrganizador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarOrganizador</servlet-name>
+        <url-pattern>/ModificarOrganizador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarLugar</servlet-name>
+        <url-pattern>/EliminarLugar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarOrganizador</servlet-name>
+        <url-pattern>/EliminarOrganizador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarLugar</servlet-name>
+        <url-pattern>/ModificarLugar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

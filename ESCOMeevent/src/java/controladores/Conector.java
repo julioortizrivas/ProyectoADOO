@@ -15,9 +15,9 @@ public class Conector {
     public  Conector(String bd, String usu, String url, String pass)
     {
         this.url=url;
-        base_datos=bd;
-	this.pass=pass;
-	usuario=usu;
+        base_datos="eventos";
+	this.pass="";
+	usuario="root";
 	driver = "com.mysql.jdbc.Driver";
 	this.url="jdbc:mysql://"+url+"/";
     }
@@ -52,19 +52,19 @@ public class Conector {
 	}
     }
 
-    public boolean modificarDatos(String sql)
+    public String modificarDatos(String sql)
     {
 	try
 	{
             Statement statement=conexion.createStatement();
             //String sql="DELETE FROM Perros;";
             statement.executeUpdate(sql);
-            return true;
+            return "Petición realizada con éxito.";
 	}
-	catch(Exception ex)
+	catch(SQLException ex)
 	{
             System.out.println("ERROR EN LA CONEXION"+ex+"  holi ");
-            return false;
+            return ex.getMessage();
 	}
     }
     public ResultSet recuperarDatos(String query)

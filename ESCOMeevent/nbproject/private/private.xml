@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/vista/VistaInicioUsuario.java</file>
-            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/vista/VistaInicioAdmin.java</file>
-            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/controladores/InicioDeSesion.java</file>
-            <file>file:/C:/Users/vicle/Documents/Quinto_Semestre/ADOO/ESCOMeevent/src/java/vista/VistaInicioGestor.java</file>
+            <file>file:/C:/Users/julio/OneDrive/Escritorio/Escuela/6%20Sexto%20Semestre/Distributed%20Data%20Bases/Primer%20Parcial/Proyecto/ProyectoEventosDDB/ProyectoEventosDDB/ESCOMeevent/src/java/controladores/Evento.java</file>
+            <file>file:/C:/Users/julio/OneDrive/Escritorio/Escuela/6%20Sexto%20Semestre/Distributed%20Data%20Bases/Primer%20Parcial/Proyecto/ProyectoEventosDDB/ProyectoEventosDDB/ESCOMeevent/src/java/controladores/Conector.java</file>
+            <file>file:/C:/Users/julio/OneDrive/Escritorio/Escuela/6%20Sexto%20Semestre/Distributed%20Data%20Bases/Primer%20Parcial/Proyecto/ProyectoEventosDDB/ProyectoEventosDDB/ESCOMeevent/src/java/vista/VistaEventosGestor.java</file>
+            <file>file:/C:/Users/julio/OneDrive/Escritorio/Escuela/6%20Sexto%20Semestre/Distributed%20Data%20Bases/Primer%20Parcial/Proyecto/ProyectoEventosDDB/ProyectoEventosDDB/ESCOMeevent/src/java/controladores/ModificarEvento.java</file>
+            <file>file:/C:/Users/julio/OneDrive/Escritorio/Escuela/6%20Sexto%20Semestre/Distributed%20Data%20Bases/Primer%20Parcial/Proyecto/ProyectoEventosDDB/ProyectoEventosDDB/ESCOMeevent/web/js/script.js</file>
         </group>
     </open-files>
 </project-private>

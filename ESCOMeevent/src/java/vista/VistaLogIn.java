@@ -1,11 +1,15 @@
 package vista;
 
+import controladores.Administrador;
+import controladores.Gestor;
+import controladores.UsuarioRegistrado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class VistaLogIn extends HttpServlet {
 
@@ -50,6 +54,8 @@ public class VistaLogIn extends HttpServlet {
             out.println("  </head>");
             out.println("");
             out.println("  <body>");
+            
+            
             out.println("    <!--Seccion de la barra de navegacion.-->");
             out.println("    <nav class='indigo darken-4 nav-extended'>");
             out.println("      <div class='nav-wrapper'>");
@@ -62,7 +68,8 @@ public class VistaLogIn extends HttpServlet {
             out.println("          </li>");
             out.println("        </ul>  ");
             out.println("      </div>");
-            out.println("");
+            
+            
             out.println("      <div class='nav-content'>");
             out.println("        <!--Zona para permitir la navegacion al usuario entre las pestanias-->");
             out.println("        <div class='col s12'>");
@@ -161,7 +168,26 @@ public class VistaLogIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession sesion=request.getSession();
+        UsuarioRegistrado us=(UsuarioRegistrado)sesion.getAttribute("usuario");
+        if(us==null)
+        {
+            System.out.println("No hay sesion iniciada");
+            processRequest(request, response);
+            
+        }
+        else if( us instanceof Gestor)
+        {
+            response.sendRedirect("VistaInicioGestor");
+        }
+        else if(us instanceof Administrador)
+        {
+            response.sendRedirect("VistaInicioAdmin");
+        }
+        else
+        {
+            response.sendRedirect("VistaInicioUsuario");
+        }
     }
 
     @Override

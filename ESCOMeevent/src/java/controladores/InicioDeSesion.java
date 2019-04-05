@@ -11,38 +11,13 @@ import javax.servlet.http.HttpSession;
 
 
 public class InicioDeSesion extends HttpServlet {
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet InicioDeSesion</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet InicioDeSesion at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        Conector conexion=new Conector("eventos","root","localhost:3306","");
-        String usu=(String)request.getParameter("usuario");
-        String clv=(String)request.getParameter("pass");
-        String query="SELECT idUSUARIO_REG,ApPat,ApMat,Nombre FROM usuario_reg WHERE idUSUARIO_REG="+usu+" AND Contrasenia="+clv+";";
-        conexion.recuperarDatos(query);
-        processRequest(request, response);
-    }
+    
 
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Conector conexion=new Conector("eventos","root","localhost:3306","");
+        Conector conexion=new Conector("eventos","root","localhost:3306","root");
         String usu=(String)request.getParameter("usuario");
         String clv=(String)request.getParameter("pass");
         String query="SELECT idUSUARIO_REG,ApPat,ApMat,Nombre FROM usuario_reg WHERE idUSUARIO_REG LIKE '"+usu+"' AND AES_DECRYPT(Contrasenia,FechaReg) LIKE '"+clv+"';";
@@ -79,21 +54,18 @@ public class InicioDeSesion extends HttpServlet {
                         //tipoUsu="Usuario Normal";
                     break;
                     default:
-                        System.out.println("Se generó un error.");
+                        response.sendRedirect("VistaMensaje?mensaje=Hubo un error desconocido al intentar iniciar sesión.");
                 }
-                
-                //System.out.println("Datos="+clave+","+nombre+"("+tipoUsu+")");
             }
             else
             {
-                System.out.println("Revisa tus datos por favor.");
+                response.sendRedirect("VistaMensaje?mensaje=Revisa tus datos por favor.");
             }
         }
         catch(Exception ex)
         {
-            System.out.println("Error:"+ex);
+            response.sendRedirect("VistaMensaje?mensaje="+ex.toString());
         }
-        processRequest(request, response);
     }
     public int revisarUsuario(String cad)
     {

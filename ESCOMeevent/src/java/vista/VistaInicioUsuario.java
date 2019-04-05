@@ -86,15 +86,21 @@ public class VistaInicioUsuario extends HttpServlet {
             out.println("          <span class='card-title pink-text darken-3-text'>Bienvenido "+usu.getNombre()+" "+usu.getApPaterno()+":</span>");
             out.println("          <p>Selecciona la operación que quieres realizar</p>");
             out.println("		  <div class='botones'>");
-            out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mi Perfil");
+            out.println("		  <button class='btn-large waves-effect waves-light' type='submit' name='action' >Mi Perfil");
             out.println("                  <i class='material-icons left'>account_circle</i>");
             out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Todos los Eventos");
+            
+            
+            out.println("           <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaProximosEventos\"'>Todos los Eventos");
             out.println("                  <i class='material-icons left'>event</i>");
             out.println("           </button>");
-            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action'>Mis Eventos");
+            out.println("		   <button class='btn-large waves-effect waves-light' type='submit' name='action' onClick='window.location=\"VistaMisEventos\"'>Mis Eventos");
             out.println("                  <i class='material-icons left'>event_available</i>");
             out.println("           </button>");
+            out.println("           <button class='btn-large waves-effect waves-light red darken-4' type='submit' name='action' onClick='window.location=\"CerrarSesion\"'>Cerrar Sesión");
+            out.println("                  <i class='material-icons left'>close</i>");
+            out.println("           </button>");
+            
             out.println("		   </div>");
             out.println("      </div>");
             out.println("    </div>");
