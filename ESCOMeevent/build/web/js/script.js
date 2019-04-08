@@ -41,30 +41,62 @@ function asociarPortafolio(gestor){
     });
 }
 
-function conseguirinfoPortf(evento){
+function conseguirUsuario(evento){
     cadena = "";
-    data = {
+    evento_obj = {
         idEvento: evento
     };
      $.ajax({
-        url: '/traerInfoPortafolios',
+        url: 'http://10.100.65.229:8080/usuario',
         type: 'get',
-        data: evento,
+        data: evento_obj,
         /*Tipo de dato de respuesta del servidor*/
         dataType: 'json',
         contentType: 'application/json',
         success: function (data) {
-            array = $.parseJSON(data);
-            $.each(array, function(i,v){
-                cadena += v + "\t";
-            });
-            $('#portf').html(data.msg);
+            
         }
     });
     
     return cadena;
 }
 
-function zonaprueba(){
-    console.log();
+function conseguirPassword(evento){
+    cadena = "";
+    evento_obj = {
+        idEvento: evento
+    };
+     $.ajax({
+        url: 'http://10.100.65.229:8080/password',
+        type: 'get',
+        data: evento_obj,
+        /*Tipo de dato de respuesta del servidor*/
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {
+            
+        }
+    });
+    
+    return cadena;
+}
+
+function conseguirPortafolio(evento){
+    cadena = "";
+    evento_obj = {
+        idEvento: evento
+    };
+     $.ajax({
+        url: 'http://10.100.65.229:8080/portafolio',
+        type: 'get',
+        data: evento_obj,
+        /*Tipo de dato de respuesta del servidor*/
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {
+            
+        }
+    });
+    
+    return cadena;
 }

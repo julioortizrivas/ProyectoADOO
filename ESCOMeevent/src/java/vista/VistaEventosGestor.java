@@ -1,4 +1,3 @@
-
 package vista;
 
 import controladores.Administrador;
@@ -140,8 +139,14 @@ public class VistaEventosGestor extends HttpServlet {
                     out.println("				  <h5 class='header'>"+eventos.get(i).getNombre()+"</h5>");
                     out.println("				  <h6 class='header'></h6>");
                     out.println("				  <blockquote>"+eventos.get(i).getInfo().getFecha()+","+eventos.get(i).getInfo().getHora());
-                    out.println("                                               <input type='hidden' id='infoPortf"+eventos.get(i).getClave()+"' value='conseguirinfoPortf('"+eventos.get(i).getClave()+"')'></input>");
-                    out.println("                                               <br/><form method='post'><button type='submit' name='portafolio'>Portafolio</button></form></blockquote>");
+         
+                    out.println("                                               <br/>"
+                            + "                                                 <form method='post' action='inicio.php' >"
+                                                                                    + "<button type='submit' name='portafolio'>Portafolio</button>"
+                                                                                    + "<input type='hidden' name='user' id='user' value='conseguirUsuario('"+eventos.get(i).getClave()+"')'></input>"
+                                                                                    + "<input type='hidden' name='cont' id='cont' value='conseguirPassword('"+eventos.get(i).getClave()+"')'></input>"
+                                                                                    + "<input type='hidden' name='port' id='port' value='conseguirPortafolio('"+eventos.get(i).getClave()+"')'></input>"
+                            + "                                                 </form></blockquote>");
                     out.println("				</div>");
                     out.println("			</div>");
                     out.println("			 <a class='btn-floating btn-large halfway-fab waves-effect waves-light  modal-trigger orange accent-3' data-target='mInfo"+eventos.get(i).getClave()+"'>");
