@@ -118,7 +118,7 @@ public class formModificarEvento extends HttpServlet {
             out.println("        <div class='card-content black-text '>");
             out.println("          <span class='card-title pink-text darken-3-text'>Evento "+ev.getNombre()+"</span>");
             out.println("          <p>Ingresa todos los datos del evento en el formulario. Recuerda que la información debe ser validada previamente. </p>");
-            out.println("          <form method='post' action='ModificarEvento' onSubmit='asociarPortafolio('"+ges.getClave()+"')'>");
+            out.println("          <form method='post' action='ModificarEvento'>");
             out.println("             <div class='row'>");
             out.println("              <div class='input-field col s12'>");
             out.println("                <input  id='clvEvento' type='text'  name='clvEvento' class='validate' value='"+ev.getClave()+"' readonly>");
@@ -207,9 +207,14 @@ public class formModificarEvento extends HttpServlet {
              out.println("                <button class='btn waves-effect waves-light' type='button' name='action' onClick='window.location=\"CancelarEvento?idE="+ev.getClave()+"&NomE="+ev.getNombre()+"\"'>Cancelar evento");
             out.println("                  <i class='material-icons right'>error</i>");
             out.println("                </button>");
+                        
+            out.println("                <button class='btn waves-effect waves-light' id='asignarPort' type='button' name='action' onClick='asociarPortafolio(\""+ges.getClave()+"\")'>Asignar Portafolio");
+            out.println("                </button>");
             out.println("                <button class='btn waves-effect waves-light' type='submit' name='action'>Modificar");
             out.println("                  <i class='material-icons right'>send</i>");
             out.println("                </button>");
+            
+            out.println("              </div>");
             out.println("              </div>");
             out.println("            </div>");
             out.println("          </form>      ");

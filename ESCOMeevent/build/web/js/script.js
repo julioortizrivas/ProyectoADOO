@@ -1,7 +1,10 @@
 
+var ip = 'http://10.100.77.47:8080/';
+
+
 function traePortafolios(){
     $.ajax({
-        url: 'http://10.100.65.229:8080/portafolios',
+        url: ip+'portafolios',
         type: 'get',
         /*Tipo de dato de respuesta del servidor*/
         dataType: 'json',
@@ -14,6 +17,7 @@ function traePortafolios(){
                 opt = document.createElement('option');
                 opt.innerHTML = data[i]['portafolio'];
                 opt.value = data[i]['portafolio'];
+                opt.id = data[i]['idUsuario']+" "+data[i]['idPortafolio'];
                 sel.appendChild(opt);
             });
             $('#portf').html(data.msg);
@@ -22,14 +26,18 @@ function traePortafolios(){
 }
 
 function asociarPortafolio(gestor){
+    
+    array = $("select#portf option:selected").attr('id').split(" ");
+    
     var data1 = {
         idEvento: $("#clvEvento").val(),
-        nombrePortafolio: $("select#portf option:selected").val(),
-        idGestor: gestor
+        idPortafolio: array[1],
+        idGestor: gestor,
+        idUsuario: array[0]
     };
 
     $.ajax({
-        url: 'http://10.100.65.229:8080/portafolios',
+        url: ip+'middleware',
         type: 'post',
         /*Tipo de dato de respuesta del servidor*/
         dataType: 'json',
@@ -39,64 +47,36 @@ function asociarPortafolio(gestor){
         },
         data: JSON.stringify(data1)
     });
+    
+    $('#asignarPort').attr("disabled", true);
 }
 
-function conseguirUsuario(evento){
-    cadena = "";
-    evento_obj = {
-        idEvento: evento
-    };
-     $.ajax({
-        url: 'http://10.100.65.229:8080/usuario',
-        type: 'get',
-        data: evento_obj,
-        /*Tipo de dato de respuesta del servidor*/
-        dataType: 'json',
-        contentType: 'application/json',
-        success: function (data) {
-            
-        }
-    });
-    
-    return cadena;
-}
 
-function conseguirPassword(evento){
-    cadena = "";
-    evento_obj = {
-        idEvento: evento
-    };
-     $.ajax({
-        url: 'http://10.100.65.229:8080/password',
-        type: 'get',
-        data: evento_obj,
-        /*Tipo de dato de respuesta del servidor*/
-        dataType: 'json',
-        contentType: 'application/json',
-        success: function (data) {
-            
-        }
-    });
-    
-    return cadena;
-}
+
 
 function conseguirPortafolio(evento){
-    cadena = "";
-    evento_obj = {
-        idEvento: evento
-    };
-     $.ajax({
-        url: 'http://10.100.65.229:8080/portafolio',
-        type: 'get',
-        data: evento_obj,
-        /*Tipo de dato de respuesta del servidor*/
-        dataType: 'json',
-        contentType: 'application/json',
-        success: function (data) {
-            
-        }
-    });
     
-    return cadena;
+    array = $('.eventCard');
+    
+    $.each(array, function( index, value ) {
+     
+        var children = $(array[index]);
+        var aux = children.children();
+        $.each(aux, function( i, v ) {
+            val = $(aux[i]);
+             $.ajax({
+                url: ip+'middleware/19gfvncjj',
+                type: 'get',
+                /*Tipo de dato de respuesta del servidor*/
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data);
+                    $('#user19gfvncjj').val(data['userName']);
+                    $('#cont19gfvncjj').val(data['contrasena']);
+                    $('#port19gfvncjj').val(data['idPortafolio']);
+                }
+            });    
+        });
+    });
 }

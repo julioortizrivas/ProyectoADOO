@@ -15,14 +15,14 @@ public class Conector {
     public  Conector(String bd, String usu, String url, String pass)
     {
         this.url=url;
-        base_datos="eventos";
+        base_datos="servicios";
 	this.pass="";
 	usuario="root";
 	driver = "com.mysql.jdbc.Driver";
 	this.url="jdbc:mysql://"+url+"/";
     }
 
-    public void conectar() 
+    public void conectar()
     throws SQLException
     {
         try
@@ -30,10 +30,15 @@ public class Conector {
             Class.forName(driver);
             conexion=DriverManager.getConnection(url+base_datos,usuario,pass);
             System.out.println("Se ha conectado a "+base_datos+" exitosamente");
+            
 	}
 	catch(Exception ex)
 	{	
             System.out.println("ERROR EN LA CONEXION"+ex);
+            System.out.println(url);
+            System.out.println(base_datos);
+            System.out.println(pass);
+            System.out.println(usuario);
             conexion.close();
 	}
         

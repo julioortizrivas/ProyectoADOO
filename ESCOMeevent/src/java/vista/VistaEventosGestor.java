@@ -141,11 +141,11 @@ public class VistaEventosGestor extends HttpServlet {
                     out.println("				  <blockquote>"+eventos.get(i).getInfo().getFecha()+","+eventos.get(i).getInfo().getHora());
          
                     out.println("                                               <br/>"
-                            + "                                                 <form method='post' action='inicio.php' >"
+                            + "                                                 <form class='eventCard' method='post' action='http://localhost:80/proyectoISW/Inicio.php' >"     
                                                                                     + "<button type='submit' name='portafolio'>Portafolio</button>"
-                                                                                    + "<input type='hidden' name='user' id='user' value='conseguirUsuario('"+eventos.get(i).getClave()+"')'></input>"
-                                                                                    + "<input type='hidden' name='cont' id='cont' value='conseguirPassword('"+eventos.get(i).getClave()+"')'></input>"
-                                                                                    + "<input type='hidden' name='port' id='port' value='conseguirPortafolio('"+eventos.get(i).getClave()+"')'></input>"
+                                                                                    + "<input type='hidden' name='user' id='user"+eventos.get(i).getClave()+"' value='"+eventos.get(i).getClave()+"'></input>"
+                                                                                    + "<input type='hidden' name='cont' id='cont"+eventos.get(i).getClave()+"' value='"+eventos.get(i).getClave()+"'></input>"
+                                                                                    + "<input type='hidden' name='port' id='port"+eventos.get(i).getClave()+"' value='"+eventos.get(i).getClave()+"'></input>"
                             + "                                                 </form></blockquote>");
                     out.println("				</div>");
                     out.println("			</div>");
@@ -208,6 +208,7 @@ public class VistaEventosGestor extends HttpServlet {
             out.println("	<script type='text/javascript' src='js/jquery-1.12.1.min.js'></script>");
             out.println("    <script type='text/javascript' src='js/materialize.min.js'></script>");
             out.println("    <script type='text/javascript' src='js/maps.js'></script>");
+            out.println("    <script type='text/javascript' src='js/script.js'></script>");
             out.println("	<script type='text/javascript'>");
             out.println("      $(function(){");
             out.println("        $('#iconomenu').sideNav(");
@@ -219,6 +220,7 @@ public class VistaEventosGestor extends HttpServlet {
             out.println("      })");
             out.println("      $(document).ready(function(){");
             out.println("        $('.modal').modal();");
+            out.println("        conseguirPortafolio();");              
             out.println("      });");
             out.println("    </script>");
             out.println("  </body>");
