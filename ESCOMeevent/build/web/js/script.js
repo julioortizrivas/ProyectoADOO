@@ -55,9 +55,8 @@ function asociarPortafolio(gestor){
 
 
 function conseguirPortafolio(evento){
-    
+    console.log("osdfkfsdofj");
     array = $('.eventCard');
-    
     $.each(array, function( index, value ) {
      
         var children = $(array[index]);
@@ -65,16 +64,16 @@ function conseguirPortafolio(evento){
         $.each(aux, function( i, v ) {
             val = $(aux[i]);
              $.ajax({
-                url: ip+'middleware/19gfvncjj',
+                url: ip+'middleware/194Even',
                 type: 'get',
                 /*Tipo de dato de respuesta del servidor*/
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function (data) {
                     console.log(data);
-                    $('#user19gfvncjj').val(data['userName']);
-                    $('#cont19gfvncjj').val(data['contrasena']);
-                    $('#port19gfvncjj').val(data['idPortafolio']);
+                    $('#user194Even').val(data['userName']);
+                    $('#cont194Even').val(data['contrasena']);
+                    $('#port194Even').val(data['idPortafolio']);
                 }
             });    
         });
